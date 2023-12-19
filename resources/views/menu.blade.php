@@ -19,14 +19,14 @@
                         <a href="{{route('service')}}" class="nav-item nav-link">Service</a>
                         <a href="{{route('menu')}}" class="nav-item nav-link active">Menu</a>
                         <div class="nav-item dropdown">
+                            <!--
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
-                                <a href="{{route('booking')}}" class="dropdown-item">Booking</a>
-                                <a href="{{route('team')}}" class="dropdown-item">Our Team</a>
-                                <a href="{{route('testimoni')}}" class="dropdown-item">Testimonial</a>
-                            </div>
+                                <a href="booking.html" class="dropdown-item">Booking</a>
+                                <a href="team.html" class="dropdown-item">Our Team</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                            </div>-->
                         </div>
-                        <a href="{{route('contact')}}" class="nav-item nav-link">Contact</a>
                     </div>
                     <a href="{{route('booking')}}" class="btn btn-primary py-2 px-4">Book A Table</a>
                 </div>
@@ -59,13 +59,14 @@
                     <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
                         <li class="nav-item">
                             <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active" data-bs-toggle="pill" href="#tab-1">
-                                <i class="fa fa-coffee fa-2x text-primary"></i>
+                                <i class="fa fa-utensils fa-2x text-primary"></i>
                                 <div class="ps-3">
                                     <small class="text-body">Popular</small>
-                                    <h6 class="mt-n1 mb-0">Breakfast</h6>
+                                    <h6 class="mt-n1 mb-0">Dishes</h6>
                                 </div>
                             </a>
                         </li>
+                        <!--
                         <li class="nav-item">
                             <a class="d-flex align-items-center text-start mx-3 pb-3" data-bs-toggle="pill" href="#tab-2">
                                 <i class="fa fa-hamburger fa-2x text-primary"></i>
@@ -75,12 +76,13 @@
                                 </div>
                             </a>
                         </li>
+                        -->
                         <li class="nav-item">
                             <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill" href="#tab-3">
-                                <i class="fa fa-utensils fa-2x text-primary"></i>
+                                <i class="fas fa-tags fa-2x text-primary"></i>
                                 <div class="ps-3">
-                                    <small class="text-body">Lovely</small>
-                                    <h6 class="mt-n1 mb-0">Dinner</h6>
+                                    <small class="text-body">Promo</small>
+                                    <h6 class="mt-n1 mb-0">Dishes</h6>
                                 </div>
                             </a>
                         </li>
@@ -90,13 +92,14 @@
                             <div class="row g-4">
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-1.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="img/japan-food/food-1.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
+                                                <span>Curry Ramen</span>
                                                 <span class="text-primary">$115</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                            <small class="fst-italic">Lembut, Gurih, Hangat, Nikmat, Aromatik, Beragam, Istimewa.</small>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -105,10 +108,10 @@
                                         <img class="flex-shrink-0 img-fluid rounded" src="img/menu-2.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
+                                                <span>Shoyu Ramen</span>
                                                 <span class="text-primary">$115</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                            <small class="fst-italic">Ramen dengan kuah kaldu berbahan dasar kecap asin (shoyu) yang gurih.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -117,10 +120,10 @@
                                         <img class="flex-shrink-0 img-fluid rounded" src="img/menu-3.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
+                                                <span>Okonomiyaki</span>
                                                 <span class="text-primary">$115</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                            <small class="fst-italic">Lezat, Melimpah, Beragam, Gurih, Menggugah Selera, Tradisional, Populer.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -129,10 +132,10 @@
                                         <img class="flex-shrink-0 img-fluid rounded" src="img/menu-4.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
+                                                <span>Yakitori</span>
                                                 <span class="text-primary">$115</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                            <small class="fst-italic">Lezat, Gurih, Aromatik, Panggang, Variatif, Menggugah Selera, Tradisional.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -141,10 +144,10 @@
                                         <img class="flex-shrink-0 img-fluid rounded" src="img/menu-5.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
+                                                <span>Omoi Ryouri</span>
                                                 <span class="text-primary">$115</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                            <small class="fst-italic">Lezat, Mengenyangkan, Variatif, Bergizi, Tradisional, Menggugah Selera, Autentik.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -153,10 +156,10 @@
                                         <img class="flex-shrink-0 img-fluid rounded" src="img/menu-6.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
+                                                <span>Kushiyaki</span>
                                                 <span class="text-primary">$115</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                            <small class="fst-italic">Gurih, Variatif, Panggang, Lezat, Tradisional, Menggugah Selera, Beragam.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -165,10 +168,10 @@
                                         <img class="flex-shrink-0 img-fluid rounded" src="img/menu-7.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
+                                                <span>Mentaiko Pizza</span>
                                                 <span class="text-primary">$115</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                            <small class="fst-italic">Pedas, Unik, Gurih, Lezat, Eksplosi Rasa, Ikan Mentaiko, Cita Rasa Jepang.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -177,10 +180,10 @@
                                         <img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
+                                                <span>Shishamo</span>
                                                 <span class="text-primary">$115</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                            <small class="fst-italic">Kecil, Gurih, Crispy, Asin, Unik, Populer, Khas Jepang.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -193,10 +196,10 @@
                                         <img class="flex-shrink-0 img-fluid rounded" src="img/menu-1.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
+                                                <span>Yasai Itame</span>
                                                 <span class="text-primary">$115</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                            <small class="fst-italic">Segar, Warna-warni, Gurih, Sehat, Nikmat, Tumis, Vegetarian.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -205,10 +208,10 @@
                                         <img class="flex-shrink-0 img-fluid rounded" src="img/menu-2.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
+                                                <span>Shoyu Ramen</span>
                                                 <span class="text-primary">$115</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                            <small class="fst-italic">Ramen dengan kuah kaldu berbahan dasar kecap asin (shoyu) yang gurih.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -217,10 +220,10 @@
                                         <img class="flex-shrink-0 img-fluid rounded" src="img/menu-3.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
+                                                <span>Okonomiyaki</span>
                                                 <span class="text-primary">$115</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                            <small class="fst-italic">Lezat, Melimpah, Beragam, Gurih, Menggugah Selera, Tradisional, Populer.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -229,10 +232,10 @@
                                         <img class="flex-shrink-0 img-fluid rounded" src="img/menu-4.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
+                                                <span>Yakitori</span>
                                                 <span class="text-primary">$115</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                            <small class="fst-italic">Lezat, Gurih, Aromatik, Panggang, Variatif, Menggugah Selera, Tradisional.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -241,10 +244,10 @@
                                         <img class="flex-shrink-0 img-fluid rounded" src="img/menu-5.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
+                                                <span>Omoy Ryouri</span>
                                                 <span class="text-primary">$115</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                            <small class="fst-italic">Lezat, Mengenyangkan, Variatif, Bergizi, Tradisional, Menggugah Selera, Autentik.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -253,10 +256,10 @@
                                         <img class="flex-shrink-0 img-fluid rounded" src="img/menu-6.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
+                                                <span>Kushiyaki</span>
                                                 <span class="text-primary">$115</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                            <small class="fst-italic">Gurih, Variatif, Panggang, Lezat, Tradisional, Menggugah Selera, Beragam.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -265,10 +268,10 @@
                                         <img class="flex-shrink-0 img-fluid rounded" src="img/menu-7.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
+                                                <span>Mentaiko Pizza</span>
                                                 <span class="text-primary">$115</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                            <small class="fst-italic">Pedas, Unik, Gurih, Lezat, Eksplosi Rasa, Ikan Mentaiko, Cita Rasa Jepang.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -277,10 +280,10 @@
                                         <img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
+                                                <span>Shishamo</span>
                                                 <span class="text-primary">$115</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                            <small class="fst-italic">Kecil, Gurih, Crispy, Asin, Unik, Populer, Khas Jepang.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -293,10 +296,10 @@
                                         <img class="flex-shrink-0 img-fluid rounded" src="img/menu-1.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
+                                                <span>Yasai Itame</span>
                                                 <span class="text-primary">$115</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                            <small class="fst-italic">Segar, Warna-warni, Gurih, Sehat, Nikmat, Tumis, Vegetarian.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -305,10 +308,10 @@
                                         <img class="flex-shrink-0 img-fluid rounded" src="img/menu-2.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
+                                                <span>Shoyu Ramen</span>
                                                 <span class="text-primary">$115</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                            <small class="fst-italic">Ramen dengan kuah kaldu berbahan dasar kecap asin (shoyu) yang gurih.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -317,10 +320,10 @@
                                         <img class="flex-shrink-0 img-fluid rounded" src="img/menu-3.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
+                                                <span>Okonomiyaki</span>
                                                 <span class="text-primary">$115</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                            <small class="fst-italic">Lezat, Melimpah, Beragam, Gurih, Menggugah Selera, Tradisional, Populer.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -329,10 +332,10 @@
                                         <img class="flex-shrink-0 img-fluid rounded" src="img/menu-4.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
+                                                <span>Yakitori</span>
                                                 <span class="text-primary">$115</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                            <small class="fst-italic">Lezat, Gurih, Aromatik, Panggang, Variatif, Menggugah Selera, Tradisional.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -341,10 +344,10 @@
                                         <img class="flex-shrink-0 img-fluid rounded" src="img/menu-5.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
+                                                <span>Omoy Ryouri</span>
                                                 <span class="text-primary">$115</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                            <small class="fst-italic">Lezat, Mengenyangkan, Variatif, Bergizi, Tradisional, Menggugah Selera, Autentik.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -353,10 +356,10 @@
                                         <img class="flex-shrink-0 img-fluid rounded" src="img/menu-6.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
+                                                <span>Kushiyaki</span>
                                                 <span class="text-primary">$115</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                            <small class="fst-italic">Gurih, Variatif, Panggang, Lezat, Tradisional, Menggugah Selera, Beragam.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -365,10 +368,10 @@
                                         <img class="flex-shrink-0 img-fluid rounded" src="img/menu-7.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
+                                                <span>Mentaiko Pizza</span>
                                                 <span class="text-primary">$115</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                            <small class="fst-italic">Pedas, Unik, Gurih, Lezat, Eksplosi Rasa, Ikan Mentaiko, Cita Rasa Jepang.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -377,10 +380,10 @@
                                         <img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Chicken Burger</span>
+                                                <span>Shishamo</span>
                                                 <span class="text-primary">$115</span>
                                             </h5>
-                                            <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                            <small class="fst-italic">Kecil, Gurih, Crispy, Asin, Unik, Populer, Khas Jepang.</small>
                                         </div>
                                     </div>
                                 </div>

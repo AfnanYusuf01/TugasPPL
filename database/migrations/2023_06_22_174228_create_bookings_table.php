@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -13,6 +14,12 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->string('email');
+            $table->string('tanggal');
+            $table->string('jam');
+            $table->string('jumlah_tamu');
+            $table->string('pesan');
             $table->timestamps();
         });
     }

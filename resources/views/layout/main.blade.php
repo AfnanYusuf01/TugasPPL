@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Restoran - Bootstrap Restaurant Template</title>
+    <link rel="icon" href="storage/R.jpeg">
+    <title>japanase Food</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -24,6 +25,8 @@
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="path/to/owl.carousel.min.css">
+    <link rel="stylesheet" href="path/to/owl.theme.default.min.css">
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -127,9 +130,33 @@
     <script src="/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('#myForm').submit(function(e){
+            e.preventDefault();
+            $.ajax({
+                url: '{{route('store')}}',
+                type: 'post',
+                data:$('#myForm').serialize(),
+                success:function(){
+                    Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: 'Your work has been saved',
+  showConfirmButton: true,
+  timer: 1500
+})
+                }
+            });
+        
+        });
+    </script>
+
+
     <script type="text/javascript">
         $(function(){
-            $(document).on('click', '#submitbro', function(e){
+            $(document).on('click', '#submi', function(e){
                 e.preventDefault();
                 var link = $(this).attr("button");
 
@@ -143,9 +170,46 @@
             })
         });
     </script>
+
+<script>
+ 
+    // Below code sets format to the
+    // datetimepicker having id as
+    // datetime
+    $('#datetime').datetimepicker({
+        format: 'mm/dd/yyyy hh:mm:ss A'
+    });
+</script>
+    <!-- Add your JavaScript link(s) here -->
+    <script src="path/to/jquery.min.js"></script>
+    <script src="path/to/owl.carousel.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.testimonial-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: false,
+                dots: true,
+                responsive:{
+                    0:{
+                        items: 1
+                    },
+                    600:{
+                        items: 2
+                    },
+                    1000:{
+                        items: 3
+                    }
+                }
+            });
+        });
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="/js/main.js"></script>
+    
+    @include('sweetalert::alert')
 </body>
 
 </html>

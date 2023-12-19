@@ -12,7 +12,8 @@ class Booking extends Model
         'nama',
         'email',
         'tanggal',
+        'jam',
         'jumlah_tamu',
-
+        'pesan'
     ];
 }

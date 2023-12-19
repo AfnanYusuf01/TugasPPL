@@ -14,22 +14,23 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
-                        <a href="{{route('index')}}" class="nav-item nav-link">Home</a>
+                        <a href="{{route('index')}}" class="nav-item nav-link ">Home</a>
                         <a href="{{route('about')}}" class="nav-item nav-link">About</a>
                         <a href="{{route('service')}}" class="nav-item nav-link active">Service</a>
                         <a href="{{route('menu')}}" class="nav-item nav-link ">Menu</a>
                         <div class="nav-item dropdown">
+                            <!--
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
-                                <a href="{{route('booking')}}" class="dropdown-item">Booking</a>
-                                <a href="{{route('team')}}" class="dropdown-item">Our Team</a>
-                                <a href="{{route('testimoni')}}" class="dropdown-item">Testimonial</a>
-                            </div>
+                                <a href="booking.html" class="dropdown-item">Booking</a>
+                                <a href="team.html" class="dropdown-item">Our Team</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                            </div>-->
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
-                    </div>
+\                    </div>
                     <a href="{{route('booking')}}" class="btn btn-primary py-2 px-4">Book A Table</a>
                 </div>
+
             </nav>
 
             <div class="container-xxl py-5 bg-dark hero-header mb-5">
@@ -92,45 +93,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-user-tie text-primary mb-4"></i>
-                                <h5>Master Chefs</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-utensils text-primary mb-4"></i>
-                                <h5>Quality Food</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-cart-plus text-primary mb-4"></i>
-                                <h5>Online Order</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-headset text-primary mb-4"></i>
-                                <h5>24/7 Service</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
         <!-- Service End -->
+        
        
 @endsection

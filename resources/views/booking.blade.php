@@ -18,16 +18,16 @@
                         <a href="{{route('service')}}" class="nav-item nav-link">Service</a>
                         <a href="{{route('menu')}}" class="nav-item nav-link ">Menu</a>
                         <div class="nav-item dropdown">
+                            <!--
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
-                                <a href="{{route('booking')}}" class="dropdown-item active">Booking</a>
-                                <a href="{{route('team')}}" class="dropdown-item">Our Team</a>
-                                <a href="{{route('testimoni')}}" class="dropdown-item">Testimonial</a>
-                            </div>
+                                <a href="booking.html" class="dropdown-item">Booking</a>
+                                <a href="team.html" class="dropdown-item">Our Team</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                            </div>-->
                         </div>
-                        <a href="{{route('contact')}}" class="nav-item nav-link">Contact</a>
                     </div>
-                    <a href="{{route('booking')}}" class="btn btn-primary py-2 px-4">Book A Table</a>
+                    <a href="{{route('booking')}}" class="btn btn-primary py-2 px-4 active">Book A Table</a>
                 </div>
             </nav>
 
@@ -76,13 +76,19 @@
                                         <label for="email">Your Email</label>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-floating date" id="date3" data-target-input="nearest">
                                         <input type="date" class="form-control datetimepicker-input" name="tanggal" id="datetime" placeholder="Tanggal" data-toggle="datetimepicker" />
-                                        <label for="datetime">Tanggal</label>
+                                        <label for="date">Tanggal</label>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
+                                    <div class="form-floating date" id="date3" data-target-input="nearest">
+                                        <input type="time" class="form-control datetimepicker-input" name="jam" id="datetime" placeholder="jam" data-target="#date4" data-toggle="datetimepicker" />
+                                        <label for="time">Jam</label>
+                                    </div>
+                                </div>                                
+                                <div class="col-md-4">
                                     <div class="form-floating">
                                         <select class="form-select" name="jumlah_tamu" id="select1">
                                           <option value=1>People 1</option>
