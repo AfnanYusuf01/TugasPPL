@@ -18,75 +18,10 @@ class TugasController extends Controller
 
             return view('about');
         }
-
-    public function booking(){
-
-            return view('booking');
-        }
-
-    public function show(){
-            $pesans = Pesan::all();
-
-            return view('index',['pesans'=>$pesans] );
-        }
-
-        public function store(Request $request)
-        {
-            //validation
-            $request->validate([
-                'nama'=>'required',
-                'email'=>'required',
-            ]);
-            $task = Booking::create($request->all());
-            return Redirect::route('index')->with('success', 'Data anda telah disimpan');
-
-        }
-        
-
-    public function storew(Request $request)
-        {
-            $request->validate([
-            'nama'=>'required',
-            'email'=>'required',
-        ]);
-
-        Booking::create([
-            'nama'=>$request->nama,
-            'email'=>$request->email,
-            'tanggal'=>$request->tanggal,
-            'jam'=>$request->jam,
-            'jumlah_tamu'=>$request->jumlah_tamu,
-            'pesan'=>$request->pesan         
-        ]);
-
-        Redirect::route('index');
-        return  Redirect::route('index');
     
+    public function layanan(){
 
-        
-    }
- 
-    public function store_pesan(Request $request)
-    {
-        $request->validate([
-            'nama'=>'required',
-            'email'=>'required',
-        ]);
-
-        Pesan::create([
-            'nama'=>$request->nama,
-            'email'=>$request->email,
-            'subjek'=>$request->subjek,
-            'pesan'=>$request->pesan,           
-        ]);
-
-        return view('contact');
-    }
- 
-    
-    public function service(){
-
-        return view('service');
+        return view('layanan');
     }
 
 
@@ -96,19 +31,16 @@ class TugasController extends Controller
     }
 
     public function index(){
-        $pesans = Pesan::All();
-        $bookings = Booking::All();
-
-        return view('index', ['pesans'=> $pesans,'bookings'=>$bookings]);
+        return view('index');
     }
     
-    public function menu(){
+    public function schedule(){
 
-        return view('menu');
+        return view('schedule');
     }
-    public function team(){
+    public function dokters(){
 
-        return view('team');
+        return view('dokters');
     }
     public function testimoni(){
 

@@ -1,94 +1,90 @@
 @extends('layout.main')
 @section('header&footer')
 
-        <!-- Navbar & Hero Start -->
-        <div class="container-xxl position-relative p-0">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
-                <a href="" class="navbar-brand p-0">
-                    <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Restoran</h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto py-0 pe-4">
-                        <a href="{{route('index')}}" class="nav-item nav-link active">Home</a>
-                        <a href="{{route('about')}}" class="nav-item nav-link">About</a>
-                        <a href="{{route('service')}}" class="nav-item nav-link">Service</a>
-                        <a href="{{route('menu')}}" class="nav-item nav-link ">Menu</a>
-                        <div class="nav-item dropdown">
-                            <!--
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu m-0">
-                                <a href="booking.html" class="dropdown-item">Booking</a>
-                                <a href="team.html" class="dropdown-item">Our Team</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            </div>-->
-                        </div>
-                    </div>
-                    <a href="{{route('booking')}}" class="btn btn-primary py-2 px-4">Book A Table</a>
-                </div>
-            </nav>
 
-            <div class="container-xxl py-5 bg-dark hero-header mb-5">
-                <div class="container my-5 py-5">
-                    <div class="row align-items-center g-5">
-                        <div class="col-lg-6 text-center text-lg-start">
-                            <h1 class="display-3 text-white animated slideInLeft">Enjoy Our<br>Delicious Dish</h1>
-                            <p class="text-white animated slideInLeft mb-4 pb-2">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                            <a href="{{route('booking')}}" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Book A Table</a>
-                        </div>
-                        <div class="col-lg-6 text-center text-lg-end overflow-hidden">
-                            <img class="img-fluid" src="img/japan-food/hero (1).png" alt="">
-                        </div>
+
+        <div class="container-xxl py-5 bg-dark hero-header mb-5">
+            <div class="container my-5 py-5">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6 text-center text-lg-start">
+                        <h1 class="display-3 text-primary-emphasis animated slideInLeft">Welcome<br>Our Hospital</h1>
+                        <p class="text-primary-emphasis animated slideInLeft mb-4 pb-2">Pusat Kesehatan Terdepan yang Menyediakan Layanan Kesehatan Komprehensif, Menerapkan Praktik Terbaik, dan Memiliki Tenaga Medis Terlatih dengan Lebih dari 20 Tahun Pengalaman.</p>
+                    </div>
+                    <div class="col-lg-6 text-center text-lg-end overflow-hidden">
+                        <img class="img-fluid" src="img/japan-food/logo.png" alt="">
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Navbar & Hero End -->
-
-
-        <!-- Service Start -->
+    </div>
+<!-- Service Start -->
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="row g-4">
                     <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="service-item rounded pt-3">
                             <div class="p-4">
-                                <i class="fa fa-3x fa-user-tie text-primary mb-4"></i>
-                                <h5>Master Chefs</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                                <a class="fa-solid fa-user-doctor fa-5x text-dark" href = "{{route('dokters')}}"></a>
+                                <h5>Daftar Dokter</h5>
+                                <p>Temui tim dokter berpengalaman kami yang siap memberikan perawatan medis terbaik untuk Anda.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="service-item rounded pt-3">
                             <div class="p-4">
-                                <i class="fa fa-3x fa-utensils text-primary mb-4"></i>
-                                <h5>Quality Food</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                                <a class="fa-regular fa-calendar-days fa-5x text-dark" href="{{route('schedule')}}"></a>
+                                <h5>Jadwal Dokter</h5>
+                                <p>"Temukan tim dokter berpengalaman yang siap memberikan perawatan kesehatan terbaik untuk Anda."</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-cart-plus text-primary mb-4"></i>
-                                <h5>Online Order</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                    @if (Auth::check())
+                    @if (Auth::user()->hasRole('pasien'))
+                        <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                            <div class="service-item rounded pt-3">
+                                <div class="p-4">
+                                    <a class="fa-regular fa-handshake fa-5x text-dark" href="{{ route('create_antrian') }}"></a>
+                                    <h5>Registrasi Online</h5>
+                                    <p>"Daftar sebagai pasien dan mulailah perjalanan menuju kesehatan dan perawatan yang terbaik dengan kami."</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @elseif (Auth::user()->hasRole('staff'))
+                        <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                            <div class="service-item rounded pt-3">
+                                <div class="p-4">
+                                    <a class="fa-solid fa-list fa-5x text-dark" href="{{route('showDataAntrian')}}" ></a>
+                                    <h5>Lihat Data Antrian</h5>
+                                    <p>Layanan untuk staff rumah sakit</p>
+                                </div>
+                            </div>
+                        </div>
+                    @elseif (Auth::user()->hasRole('dokter'))
+                        <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                            <div class="service-item rounded pt-3">
+                                <div class="p-4">
+                                    <a class="fa-regular fa-pen-to-square fa-5x text-dark" href="{{route('cari.dokter')}}" ></a>
+                                    <h5>Input Rekam Medis</h5>
+                                    <p>Layanan untuk staff rumah sakit</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    @endif
+
+                @else
+                    <!-- Tampilkan elemen login default jika pengguna tidak masuk -->
                     <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
                         <div class="service-item rounded pt-3">
                             <div class="p-4">
-                                <i class="fa fa-3x fa-headset text-primary mb-4"></i>
-                                <h5>24/7 Service</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                                <a class="fa-solid fa-right-to-bracket fa-5x text-dark" href="{{ route('login') }}" ></a>
+                                <h5>Log In</h5>
+                                <p>Layanan untuk staff rumah sakit</p>
                             </div>
                         </div>
                     </div>
+                @endif                
                 </div>
             </div>
         </div>
@@ -96,7 +92,7 @@
 
 
         <!-- About Start -->
-        <div class="container-xxl py-5">
+        <div class="container-xxl py-5" id="about">
             <div class="container">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6">
@@ -116,10 +112,9 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <h5 class="section-title ff-secondary text-start text-primary fw-normal">About Us</h5>
-                        <h1 class="mb-4">Welcome to <i class="fa fa-utensils text-primary me-2"></i>Restoran</h1>
-                        <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos erat ipsum et lorem et sit, sed stet lorem sit.</p>
-                        <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                        <h1 class="mb-4">Welcome to <i class="fa-regular fa-hospital text-dark"></i></i>Our Hospital</h1>
+                        <p class="mb-4">Kami percaya bahwa setiap pasien memiliki kebutuhan unik, dan kami berkomitmen untuk memberikan perawatan yang disesuaikan dengan kebutuhan individual mereka. Dari pemeriksaan rutin hingga perawatan yang lebih kompleks, tim dokter kami selalu siap memberikan perhatian yang cermat dan komprehensi.</p>
+                        <p class="mb-4"> Selain itu, kami menyediakan akses mudah ke informasi jadwal dokter, pendaftaran pasien, dan layanan darurat. Rumah Sakit IKN adalah tempat di mana perawatan berkualitas bertemu dengan perhatian yang tulus, dan kami berusaha untuk menjadikan setiap kunjungan Anda sebagai pengalaman yang nyaman dan positif.</p>
                         <div class="row g-4 mb-4">
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center border-start border-5 border-primary px-3">
@@ -148,351 +143,73 @@
         <!-- About End -->
 
 
-        <!-- Menu Start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Food Menu</h5>
-                    <h1 class="mb-5">Most Popular Items</h1>
+        <!-- Berita Starr -->
+        <div class="container-xxl py-5" id="berita">
+            <h2 class="textBerita">Berita Terkini Kesehatan</h2>
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="news-card" id="bg-berita">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <img src="img/berita1.jpg" alt="Berita 1" class="gambar-berita">
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <a href="#" class="btn btn-sm btn-dark">Berita Menarik</a>
+                                <h3>Judul Berita 1</h3>
+                                <p>Deskripsi singkat berita 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <a href="#" class="read-more-link">Lihat Berita</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
-                        <li class="nav-item">
-                            <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active" data-bs-toggle="pill" href="#tab-1">
-                                <i class="fa fa-utensils fa-2x text-primary"></i>
-                                <div class="ps-3">
-                                    <small class="text-body">Popular</small>
-                                    <h6 class="mt-n1 mb-0">Dishes</h6>
-                                </div>
-                            </a>
-                        </li>
-                        <!--
-                        <li class="nav-item">
-                            <a class="d-flex align-items-center text-start mx-3 pb-3" data-bs-toggle="pill" href="#tab-2">
-                                <i class="fa fa-hamburger fa-2x text-primary"></i>
-                                <div class="ps-3">
-                                    <small class="text-body">Special</small>
-                                    <h6 class="mt-n1 mb-0">Launch</h6>
-                                </div>
-                            </a>
-                        </li>
-                        -->
-                        <li class="nav-item">
-                            <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill" href="#tab-3">
-                                <i class="fas fa-tags fa-2x text-primary"></i>
-                                <div class="ps-3">
-                                    <small class="text-body">Promo</small>
-                                    <h6 class="mt-n1 mb-0">Dishes</h6>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-                        <div id="tab-1" class="tab-pane fade show p-0 active">
-                            <div class="row g-4">
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/japan-food/food-1.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Curry Ramen</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Lembut, Gurih, Hangat, Nikmat, Aromatik, Beragam, Istimewa.</small>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-2.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Shoyu Ramen</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Ramen dengan kuah kaldu berbahan dasar kecap asin (shoyu) yang gurih.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-3.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Okonomiyaki</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Lezat, Melimpah, Beragam, Gurih, Menggugah Selera, Tradisional, Populer.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-4.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Yakitori</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Lezat, Gurih, Aromatik, Panggang, Variatif, Menggugah Selera, Tradisional.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-5.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Omoi Ryouri</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Lezat, Mengenyangkan, Variatif, Bergizi, Tradisional, Menggugah Selera, Autentik.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-6.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Kushiyaki</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Gurih, Variatif, Panggang, Lezat, Tradisional, Menggugah Selera, Beragam.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-7.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Mentaiko Pizza</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Pedas, Unik, Gurih, Lezat, Eksplosi Rasa, Ikan Mentaiko, Cita Rasa Jepang.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Shishamo</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Kecil, Gurih, Crispy, Asin, Unik, Populer, Khas Jepang.</small>
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="news-card" id="bg-berita">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <img src="img/berita1.jpg" alt="Berita 1" class="gambar-berita">
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <a href="#" class="btn btn-sm btn-dark">Berita Menarik</a>
+                                <h3>Judul Berita 1</h3>
+                                <p>Deskripsi singkat berita 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <a href="#" class="read-more-link">Lihat Berita</a>
                             </div>
                         </div>
-                        <div id="tab-2" class="tab-pane fade show p-0">
-                            <div class="row g-4">
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-1.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Yasai Itame</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Segar, Warna-warni, Gurih, Sehat, Nikmat, Tumis, Vegetarian.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-2.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Shoyu Ramen</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Ramen dengan kuah kaldu berbahan dasar kecap asin (shoyu) yang gurih.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-3.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Okonomiyaki</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Lezat, Melimpah, Beragam, Gurih, Menggugah Selera, Tradisional, Populer.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-4.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Yakitori</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Lezat, Gurih, Aromatik, Panggang, Variatif, Menggugah Selera, Tradisional.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-5.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Omoy Ryouri</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Lezat, Mengenyangkan, Variatif, Bergizi, Tradisional, Menggugah Selera, Autentik.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-6.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Kushiyaki</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Gurih, Variatif, Panggang, Lezat, Tradisional, Menggugah Selera, Beragam.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-7.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Mentaiko Pizza</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Pedas, Unik, Gurih, Lezat, Eksplosi Rasa, Ikan Mentaiko, Cita Rasa Jepang.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Shishamo</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Kecil, Gurih, Crispy, Asin, Unik, Populer, Khas Jepang.</small>
-                                        </div>
-                                    </div>
-                                </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="news-card" id="bg-berita">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <img src="img/berita1.jpg" alt="Berita 1" class="gambar-berita">
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <a href="#" class="btn btn-sm btn-dark">Berita Menarik</a>
+                                <h3>Judul Berita 1</h3>
+                                <p>Deskripsi singkat berita 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <a href="#" class="read-more-link">Lihat Berita</a>
                             </div>
                         </div>
-                        <div id="tab-3" class="tab-pane fade show p-0">
-                            <div class="row g-4">
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-1.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Yasai Itame</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Segar, Warna-warni, Gurih, Sehat, Nikmat, Tumis, Vegetarian.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-2.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Shoyu Ramen</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Ramen dengan kuah kaldu berbahan dasar kecap asin (shoyu) yang gurih.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-3.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Okonomiyaki</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Lezat, Melimpah, Beragam, Gurih, Menggugah Selera, Tradisional, Populer.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-4.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Yakitori</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Lezat, Gurih, Aromatik, Panggang, Variatif, Menggugah Selera, Tradisional.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-5.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Omoy Ryouri</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Lezat, Mengenyangkan, Variatif, Bergizi, Tradisional, Menggugah Selera, Autentik.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-6.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Kushiyaki</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Gurih, Variatif, Panggang, Lezat, Tradisional, Menggugah Selera, Beragam.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-7.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Mentaiko Pizza</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Pedas, Unik, Gurih, Lezat, Eksplosi Rasa, Ikan Mentaiko, Cita Rasa Jepang.</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>Shishamo</span>
-                                                <span class="text-primary">$115</span>
-                                            </h5>
-                                            <small class="fst-italic">Kecil, Gurih, Crispy, Asin, Unik, Populer, Khas Jepang.</small>
-                                        </div>
-                                    </div>
-                                </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="news-card" id="bg-berita">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <img src="img/berita1.jpg" alt="Berita 1" class="gambar-berita">
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <a href="#" class="btn btn-sm btn-dark">Berita Menarik</a>
+                                <h3>Judul Berita 1</h3>
+                                <p>Deskripsi singkat berita 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <a href="#" class="read-more-link">Lihat Berita</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>        
+    
         <!-- Menu End -->
 
 
@@ -506,102 +223,12 @@
                         </button>
                     </div>
                 </div>
-                <div class="col-md-6 bg-dark d-flex align-items-center">
-                    <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
-                        <h5 class="section-title ff-secondary text-start text-primary fw-normal">Reservation</h5>
-                        <h1 class="text-white mb-4">Book A Table Online</h1>
-                        <form id="myFor" action="{{route('store')}}" method="post">
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" name="nama" id="name" placeholder="Your Name">
-                                        <label for="name">Your Name</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email">
-                                        <label for="email">Your Email</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-floating date" id="date3" data-target-input="nearest">
-                                        <input type="date" class="form-control datetimepicker-input" name="tanggal" id="datetime" placeholder="Tanggal" data-target="#date4" data-toggle="datetimepicker" />
-                                        <label for="datetime">Tanggal</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-floating date" id="date3" data-target-input="nearest">
-                                        <input type="time" class="form-control datetimepicker-input" name="jam" id="datetime" placeholder="jam" data-target="#date4" data-toggle="datetimepicker" />
-                                        <label for="datetime">Jam</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-floating">
-                                        <select class="form-select" name="jumlah_tamu" id="select1">
-                                          <option value=1>People 1</option>
-                                          <option value=2>People 2</option>
-                                          <option value=3>People 3</option>
-                                        </select>
-                                        <label for="select1">No Of People</label>
-                                      </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Special Request" name="pesan" id="message" style="height: 100px"></textarea>
-                                        <label for="message">Special Request</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit" id="myform">Book Now</button>
-                                </div>
-                                <div class="col-12">
-                                    <button type="button" class="btn btn-outline-light w-100 py-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        Check RSVP
-                                      </button>
-                                </div>
-                                    
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="0" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog border border-warning border-3 modal-dialog-scrollable ">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Data Pemesan</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                @foreach ($bookings as $booking)
-                                                <div class="container-fluid">
-                                                    <div class="row border border-warning border-3 mb-3 ms auto">
-                                                        <div class="card">
-                                                            <div class="card-header">
-                                                            Pesanan 
-                                                            </div>
-                                                            <ul class="list-group list-group-flush">
-                                                            <li class="list-group-item">Nama        : {{$booking->nama}}</li>
-                                                            <li class="list-group-item">Email       : {{$booking->email}}</li>
-                                                            <li class="list-group-item">tanggal     : {{$booking->tanggal}}</li>
-                                                            <li class="list-group-item">Jam         : {{$booking->jam}}</li>
-                                                            <li class="list-group-item">Jumlah Tamu : {{$booking->jumlah_tamu}}</li>
-                                                            <li class="list-group-item">Pesan       : {{$booking->pesan}}</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                @endforeach
-                                            </div>
-                                            <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </div>
-
-                            </div>
-                        </form>
+                <div class="col-md-6 bg-dark d-flex align-items-center" id="bg-service">
+                    <div class="card-body">
+                        <h3>IKN Medic TV</h3>
+                        <p class="card-text">Lebih dekat bersama kami.</p>
                     </div>
                 </div>
-            </div>
         </div>
 
         <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -623,97 +250,48 @@
         </div>
         <!-- Reservation Start -->
 
-
-        <!-- Team Start --><!--
-        <div class="container-xxl pt-5 pb-3">
-            <div class="container">
-                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Team Members</h5>
-                    <h1 class="mb-5">Our Master Chefs</h1>
-                </div>
-                <div class="row g-4">
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-item text-center rounded overflow-hidden">
-                            <div class="rounded-circle overflow-hidden m-4">
-                                <img class="img-fluid" src="img/team-1.jpg" alt="">
-                            </div>
-                            <h5 class="mb-0">Full Name</h5>
-                            <small>Designation</small>
-                            <div class="d-flex justify-content-center mt-3">
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="team-item text-center rounded overflow-hidden">
-                            <div class="rounded-circle overflow-hidden m-4">
-                                <img class="img-fluid" src="img/team-2.jpg" alt="">
-                            </div>
-                            <h5 class="mb-0">Full Name</h5>
-                            <small>Designation</small>
-                            <div class="d-flex justify-content-center mt-3">
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="team-item text-center rounded overflow-hidden">
-                            <div class="rounded-circle overflow-hidden m-4">
-                                <img class="img-fluid" src="img/team-3.jpg" alt="">
-                            </div>
-                            <h5 class="mb-0">Full Name</h5>
-                            <small>Designation</small>
-                            <div class="d-flex justify-content-center mt-3">
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                        <div class="team-item text-center rounded overflow-hidden">
-                            <div class="rounded-circle overflow-hidden m-4">
-                                <img class="img-fluid" src="img/team-4.jpg" alt="">
-                            </div>
-                            <h5 class="mb-0">Full Name</h5>
-                            <small>Designation</small>
-                            <div class="d-flex justify-content-center mt-3">
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Carasoul Start -->
+    <div class="container-xxl py-5">
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-interval="3000">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+          </ol>
+      
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="img/carasoul1.jpeg" alt="Slide 1" class="d-block mx-auto img-fluid">
             </div>
-        </div>-->
-        <!-- Team End -->
-
-
-        <!-- Testimonial Start -->
-        <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s" >
-            <div class="container">
-                <div class="text-center">
-                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Testimonial</h5>
-                    <h1 class="mb-5">Our Clients Say!!!</h1>
-                </div>
-                @foreach ($pesans as $pesan)
-                    <div class="card" style="width: 50rem;">
-                        <div class="card-body">
-                        <h5 class="card-title">{{$pesan->nama}}</h5>
-                        <small>{{$pesan->email}}</small><br>
-                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                        <p class="card-text fs-5">{{$pesan->pesan}}</p>
-                        </div>
-                    </div>
-                @endforeach
+            <div class="carousel-item">
+              <img src="img/carasoul2.jpeg" alt="Slide 2" class="d-block mx-auto img-fluid">
             </div>
+            <div class="carousel-item">
+              <img src="img/carasoul3.jpeg" alt="Slide 3" class="d-block mx-auto img-fluid">
+            </div>
+            <div class="carousel-item">
+              <img src="img/carasoul4.jpeg" alt="Slide 4" class="d-block mx-auto img-fluid">
+            </div>
+            <div class="carousel-item">
+              <img src="img/carasoul15.jpeg" alt="Slide 5" class="d-block mx-auto img-fluid">
+            </div>
+          </div>
+      
+          <!-- Left and right controls -->
+          <a class="carousel-control-prev" href="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
         </div>
-        <!-- Testimonial End -->
+      </div>
+              
+<!-- Carasoul End -->
         
 
         

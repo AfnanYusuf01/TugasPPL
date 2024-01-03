@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -21,7 +22,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role', 
+
     ];
+
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -38,8 +43,24 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
+    
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function hasRole($role)
+    {
+        return $this->role === $role; // Sesuaikan dengan cara penyimpanan peran Anda di dalam tabel pengguna
+    }
+
+    // Tambahkan relasi dengan tabel Pasien
+// Di dalam model User
+public function pasien()
+{
+    return $this->hasOne(Pasien::class);
+}
+public function dokter()
+{
+    return $this->hasOne(Dokter::class);
+}
 }

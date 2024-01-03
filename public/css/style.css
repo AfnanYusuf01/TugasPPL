@@ -1,6 +1,5 @@
 /********** Template CSS **********/
 :root {
-    --primary: #FEA116;
     --light: #F1F8FF;
     --dark: #0F172B;
 }
@@ -82,17 +81,25 @@
 
 
 /*** Navbar ***/
+
 .navbar-dark .navbar-nav .nav-link {
     position: relative;
     margin-left: 25px;
     padding: 35px 0;
     font-size: 15px;
-    color: var(--light) !important;
+    color: #0F172B;
     text-transform: uppercase;
     font-weight: 500;
     outline: none;
     transition: .5s;
 }
+
+.active {
+    color:  rgba(37, 167, 214); /* Warna teks untuk tautan aktif */
+    /* Tambahkan latar belakang berbentuk oval di bawah ini */
+|}
+
+
 
 .sticky-top.navbar-dark .navbar-nav .nav-link {
     padding: 20px 0;
@@ -100,7 +107,7 @@
 
 .navbar-dark .navbar-nav .nav-link:hover,
 .navbar-dark .navbar-nav .nav-link.active {
-    color: var(--primary) !important;
+    color:  rgba(37, 167, 214) !important;
 }
 
 .navbar-dark .navbar-brand img {
@@ -145,14 +152,25 @@
     
     .sticky-top.navbar-dark {
         position: fixed;
-        background: var(--dark) !important;
+        background: var(--light) !important;
     }
 }
+
+.custom-btn {
+    background-color: red; /* Warna latar belakang merah */
+    color: white; /* Warna teks putih */
+    transition: background-color 0.5s; /* Efek transisi perubahan warna latar belakang */
+}
+
+.custom-btn:hover {
+    background-color: green; /* Warna latar belakang saat di-hover menjadi hijau */
+}
+
 
 
 /*** Hero Header ***/
 .hero-header {
-    background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .9)), url(../img/japan-food/bg-hero.jpg);
+    background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.9)), url(../img/japan-food/bg-hero.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -211,10 +229,13 @@
 .service-item {
     box-shadow: 0 0 45px rgba(0, 0, 0, .08);
     transition: .5s;
+    height: 300px; 
+    border-radius: 20px; 
+    background-color : rgba(37, 167, 214, 0.3);
 }
 
 .service-item:hover {
-    background: var(--primary);
+    background: rgba(137, 191, 210, 0.8);
 }
 
 .service-item * {
@@ -225,10 +246,75 @@
     color: var(--light) !important;
 }
 
+/* about */
+#about {
+    background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(37, 167, 214, 0.3))
+}
 
-/*** Food Menu ***/
-.nav-pills .nav-item .active {
-    border-bottom: 2px solid var(--primary);
+/*** berita ***/
+
+.news-card {
+    margin: 20px;
+    padding: 10px;
+    border: none
+    border-radius: 10px; /* Ubah nilai ini sesuai dengan seberapa banyak lengkungan yang Anda inginkan */
+    overflow: hidden; /* Ini untuk memastikan konten dalam elemen tidak keluar dari lengkungan */
+    
+}
+.textBerita{
+    text-align : center;
+}
+.gambar-berita {
+    width: 100%; /* Atur lebar gambar agar memenuhi kontainer */
+    height: auto; /* Menghindari distorsi gambar */
+    border-radius: 5px; /* Memberikan sudut melengkung pada gambar */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Menambahkan bayangan untuk tampilan elegan */
+}
+
+
+#bg-berita{
+    background: linear-gradient(rgba(37, 167, 214, 0.3), rgba(255, 255, 255, 0.1))
+    border-radius : 
+}
+
+#berita {
+    background: linear-gradient(rgba(37, 167, 214, 0.3), rgba(255, 255, 255, 0.1))
+}
+.btn-xm{
+    border-radius : 50px;
+    overflow: hidden;
+}
+
+#berita1{
+    width : 200px;
+    height : 200px;
+}
+
+.read-more-link {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: #007bff; /* Warna tautan */
+}
+
+.read-more-link::after {
+    content: ' →';
+    position: absolute;
+    right: ;
+    transition: transform 0.3s;
+}
+
+.read-more-link:hover::after {
+    transform: translateX(5px); /* Menggeser tanda panah 5px ke kanan saat dihover */
+}
+
+
+/* Service */
+#bg-service{
+    
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.9)), url("../img/service.jpeg");
+    
+    
 }
 
 
@@ -353,7 +439,7 @@
 /*** Team ***/
 .team-item {
     box-shadow: 0 0 45px rgba(0, 0, 0, .08);
-    height: calc(100% - 38px);
+    height: calc(100% - 40px);
     transition: .5s;
 }
 
@@ -413,6 +499,19 @@
 }
 
 
+/* carasoul */
+.square-image {
+    max-width: 100%;
+    height: 100%;
+}
+
+#myCarousel {
+    background-image: url('img/bg-carasoul.jpeg'); /* Ganti dengan path gambar latar belakang Anda */
+    background-size: cover;
+    background-position: center;
+  }
+
+
 /*** Footer ***/
 .footer .btn.btn-social {
     margin-right: 5px;
@@ -421,14 +520,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--light);
-    border: 1px solid #FFFFFF;
+    color: var(--dark);
+    border: 1px solid var(--dark);;
     border-radius: 35px;
     transition: .3s;
 }
 
 .footer .btn.btn-social:hover {
-    color: var(--primary);
+    color: var(--light);
 }
 
 .footer .btn.btn-link {
@@ -436,7 +535,7 @@
     margin-bottom: 5px;
     padding: 0;
     text-align: left;
-    color: #FFFFFF;
+    color: var(--dark);
     font-size: 15px;
     font-weight: normal;
     text-transform: capitalize;
@@ -459,14 +558,15 @@
 .footer .copyright {
     padding: 25px 0;
     font-size: 15px;
-    border-top: 1px solid rgba(256, 256, 256, .1);
+    border-top: 1px solid var(--dark);;
 }
 
 .footer .copyright a {
-    color: var(--light);
+    color: var(--dark);
 }
 
 .footer .footer-menu a {
+    color : var(--dark);
     margin-right: 15px;
     padding-right: 15px;
     border-right: 1px solid rgba(255, 255, 255, .1);
@@ -479,4 +579,80 @@
 }
 .card-header{
     font-family : 'Pacifico', cursive;
+}
+#footer{
+    background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(37, 167, 214, 0.3))
+}
+#footPage{
+    color : var(--dark);
+}
+.footer-menu{
+    color : var(--dark);
+}
+
+/* schedcule dokter */
+ /* Ganti warna latar belakang ikon slide menjadi hitam (#000) */
+ .carousel-control-prev-icon,
+ .carousel-control-next-icon {
+   background-color: #000;
+   margin : 5px;
+ }
+
+ /* Invert warna ikon agar tetap terlihat pada latar belakang gelap */
+ .carousel-control-prev,
+ .carousel-control-next {
+   filter: invert(100%);
+ }
+
+
+ /* form */
+ #containerform {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+  }
+  
+  .form-container {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 500px;
+  }
+  
+  .form-title {
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-check-label {
+    font-weight: normal;
+  }
+  
+  #submit {
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+
+  /* Tambahkan ke dalam file CSS Anda atau dalam tag <style> di header HTML */
+.table td, .table th {
+    font-size: 14px;
+}
+
+.table td.text-left {
+    max-width: 300px; /* Sesuaikan dengan kebutuhan */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
