@@ -38,7 +38,7 @@
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin ingin menghapus?')">Hapus</button>
                                 </form>
                             
-                                <a href="{{ route('cek_data', ['id_pasien' => $antrian->id_pasien]) }}" class="btn btn-primary btn-sm">Cek Data</a>
+                                <a href="{{ route('cek_dataa', ['id' => $antrian->id]) }}" class="btn btn-primary btn-sm">Cek Data</a>
                             
                                 <form action="{{ route('update-status', ['id' => $antrian->id]) }}" method="post">
                                     @csrf

@@ -46,7 +46,7 @@ Route::get('/addAntrian', [PasienController::class, 'create_antrian'])->name('cr
 Route::post('/store', [PasienController::class, 'store_antrian'])->name('create_antrian');
 
 
-Route::get('/show_data_antrian', [StaffController::class, 'showDataAntrian'])->name('showDataAntrian');
+
 Route::delete('/antrian/{id}', [StaffController::class, 'delete_antrian'])->name('delete_antrian');
 
 
@@ -78,9 +78,15 @@ Route::middleware(['role.access:pasien'])->group(function () {
 Route::middleware(['role.access:staff'])->group(function () {
     Route::get('/cek-referal', [PasienController::class, 'showCekReferal'])->name('showCekReferal');
     Route::post('/cek-referal/cek', [PasienController::class, 'cekReferal'])->name('cekReferal');
-    Route::get('/cek_data/{id_pasien}', [PasienController::class, 'cekData'])->name('cek_data');
+    Route::get('/cek_data/{id}', [PasienController::class, 'cekData'])->name('cek_dataa');
     Route::put('/update-status/{id}', [PasienController::class, 'updateStatus'])->name('update-status');
 
+    // routes/web.php
+
+    Route::get('/show_data_antrian', [StaffController::class, 'showDataAntrian'])->name('showDataAntrian');
+
+    Route::get('/app/{filename}', [StaffController::class,'lihatSuratRujukan'])->name('lihat_surat_rujukan');
+    Route::get('/lihat-bpjs/{filename}', [StaffController::class, 'lihatBpjs'])->name('lihat.bpjs');
     
 });
 
@@ -91,8 +97,19 @@ Route::middleware(['role.access:dokter'])->group(function () {
     
     Route::get('/cari-pasien', [DokterController::class, 'show_pasien'])->name('cari.dokter');
     Route::post('/cariPasien', [DokterController::class, 'cari'])->name('cari_pasien');
+    Route::get('/cari-rekam-medis/{id_pasien}', [DokterController::class, 'cariRekamMedisPasien'])->name('cari_rekam_medis_pasien');
 
-    Route::get('/rekam-medis/{id}', [DokterController::class, 'showRekamMedis'])->name('show.rekam_medis');
+
+    Route::get('/tambah-rekam-medis/{id_pasien}', [DokterController::class, 'tambahRekamMedisForm'])->name('tambah_rekam_medis_form');
+    Route::post('/store-rekam-medis', [DokterController::class, 'storeRekamMedis'])->name('store.rekam_medis');
+
+    Route::get('/detail-rekam-medis/{id}', [DokterController::class, 'detailRekamMedisForm'])->name('detail_rekam_medis_form');
+    Route::post('/update-rekam-medis', [DokterController::class, 'updateRekamMedis'])->name('update_rekam_medis');
+
+    Route::post('/update-status-antrian/{id_pasien}', [DokterController::class, 'updateStatus'])->name('update_status_antrian');
+
+
+
 
     });
 require __DIR__.'/auth.php';

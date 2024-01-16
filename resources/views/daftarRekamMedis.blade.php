@@ -26,11 +26,11 @@
                         <td>{{ $rekam->diagnosis }}</td>
                         <td>
                             <div class="btn-group" role="group">
-                                <form action="{{ route('route_detail_rekam_medis', ['id' => $rekam->id]) }}" method="get">
+                                <form action="{{ route('detail_rekam_medis_form', ['id' => $rekam->id]) }}" method="get">
                                     @csrf
                                     <button type="submit" class="btn btn-primary btn-sm">Detail</button>
                                 </form>
-                            </div>
+                            </div> 
                         </td>
                     </tr>
                     @empty
@@ -45,9 +45,11 @@
                 @endisset
                 <tr>
                     <td colspan="4" class="text-center">                            
-                        <form action="{{ route('route_tambah_rekam_medis', ['id_pa' => $id_pasien, 'id_dokter' => $id_dokter]) }}" method="get">
+                        <a href="{{ route('tambah_rekam_medis_form', ['id_pasien' => $pasien->id]) }}" class="btn btn-success btn-sm">Tambah Rekam Medis</a>
+                        <br>                                              
+                        <form action="{{ route('update_status_antrian', ['id_pasien' => $pasien->id]) }}" method="post">
                             @csrf
-                            <button type="submit" class="btn btn-primary btn-sm">Tambah Rekam Medis</button>
+                            <button type="submit" class="btn btn-danger btn-sm">Telah Diperiksa</button>
                         </form>
                     </td>
                 </tr>

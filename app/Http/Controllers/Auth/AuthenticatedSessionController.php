@@ -27,27 +27,26 @@ class AuthenticatedSessionController extends Controller
      * Handle an incoming authentication request.
      */
     
-    public function store(LoginRequest $request): RedirectResponse
-    {
-        $request->authenticate();
-    
-        $request->session()->regenerate();
-    
-
-        // Periksa apakah pengguna memiliki relasi Pasien
-        $user = Auth::user();
-
-        // Mengambil objek Pasien yang terkait dengan user
-        $pasien = $user->pasien;
-    
-        // Jika pengguna belum memiliki Pasien, Anda dapat menangani kasus ini sesuai kebutuhan Anda
-            if (!$pasien && $pasien->role == 'pasien') {
-                return redirect()->route('show.biodata');
-            }else {
-                // Jika belum memiliki Pasien, arahkan ke rute lainnya
-                return redirect()->route('index');
-            }
-    }
+     public function store(LoginRequest $request): RedirectResponse
+     {
+         $request->authenticate();
+         $request->session()->regenerate();
+     
+         // Periksa apakah pengguna memiliki relasi Pasien
+         $user = Auth::user();
+     
+         // Mengambil objek Pasien yang terkait dengan user
+         $pasien = $user->pasien;
+     
+         // Periksa apakah pengguna adalah pasien dan memiliki objek Pasien terkait
+         if ($pasien && $pasien->role == 'pasien') {
+             return redirect()->route('show.biodata');
+         } else {
+             // Jika belum memiliki Pasien atau bukan Pasien, arahkan ke rute lainnya
+             return redirect()->route('index');
+         }
+     }
+     
 
     public function redirectToGoogle()
     {

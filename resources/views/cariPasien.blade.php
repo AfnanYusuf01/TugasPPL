@@ -41,12 +41,9 @@
                             <td>{{ $pasie->email }}</td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <form action="{{ route('show.rekam_medis', ['id' => $pasie->id]) }}" method="get" class="ml-2">
-                                        @csrf
-                                        <button type="submit" class="btn btn-primary btn-sm">Lihat Rekam Medis</button>
-                                    </form>
-                                </div>
-                            </td>
+                                    <a href="{{ route('cari_rekam_medis_pasien', ['id_pasien' => $pasie->id]) }}" class="btn btn-primary btn-sm">Cari Rekam Medis</a>
+                                </div>                                
+                            </td>                            
                         </tr>
                     @empty
                         <tr>

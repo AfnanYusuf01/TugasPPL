@@ -26,7 +26,7 @@ class Pasien extends Model
         'nik',
         'user_id'
     ];
-    protected $primaryKey = 'id_pasien';
+    protected $primaryKey = 'id';
     // Tambahkan relasi dengan tabel User dan Antrian
 // Di dalam model Pasien
 public function user()

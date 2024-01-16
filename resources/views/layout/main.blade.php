@@ -51,11 +51,11 @@
 <body>
     <div class="container-xxl bg-white p-0">
         <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        {{-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-dark" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
-        </div>
+        </div> --}}
         <!-- Spinner End -->
 
 <!-- Navbar & Hero Start -->
@@ -112,62 +112,60 @@
                 <!-- Navbar & Hero End -->
 
 @yield('header&footer')
-        <!-- Footer Start -->
-        <div class="container-fluid bg-light text-dark footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s" id="footer">
-            <div class="container py-5">
-                <div class="row g-5">
-                    <div class="col-lg-3 col-md-6">
-                        <h4 class="section-title ff-secondary text-start text-dark fw-normal mb-4">Company</h4>
-                        <a class="btn btn-link" href="">About Us</a>
-                        <a class="btn btn-link" href="">Contact Us</a>
-                        <a class="btn btn-link" href="">Reservation</a>
-                        <a class="btn btn-link" href="">Privacy Policy</a>
-                        <a class="btn btn-link" href="">Terms & Condition</a>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <h4 class="section-title ff-secondary text-start text-dark fw-normal mb-4">Contact</h4>
-                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
-                        <div class="d-flex pt-2">
-                            <a class="btn btn-outline-dark btn-social" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-dark btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-dark btn-social" href=""><i class="fab fa-youtube"></i></a>
-                            <a class="btn btn-outline-dark btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <h4 class="section-title ff-secondary text-start text-dark fw-normal mb-4">Opening</h4>
-                        <h5 class="text-dark fw-normal">Monday - Saturday</h5>
-                        <p>09AM - 09PM</p>
-                        <h5 class="text-dark fw-normal">Sunday</h5>
-                        <p>10AM - 08PM</p>
-                    </div>
+       <!-- Footer Start -->
+<div class="container-fluid bg-light text-dark footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s" id="footer">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-3 col-md-6">
+                <h4 class="section-title ff-secondary text-start text-dark fw-normal mb-4">Perusahaan</h4>
+                <a class="btn btn-link" href="">Tentang Kami</a>
+                <a class="btn btn-link" href="">Hubungi Kami</a>
+                <a class="btn btn-link" href="">Reservasi</a>
+                <a class="btn btn-link" href="">Kebijakan Privasi</a>
+                <a class="btn btn-link" href="">Syarat & Ketentuan</a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="section-title ff-secondary text-start text-dark fw-normal mb-4">Kontak</h4>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Jalan 123, Kota New York, USA</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                <div class="d-flex pt-2">
+                    <a class="btn btn-outline-dark btn-social" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-dark btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-dark btn-social" href=""><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-outline-dark btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-            <div class="container">
-                <div class="copyright">
-                    <div class="row">
-                        <div class="col-md-6 text-center text-dark text-md-start mb-3 mb-md-0" id="footPage">
-                            &copy; <a class="border-bottom-dark" href="#">Your Site Name</a>, All Right Reserved. 
-							
-							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-							Designed By <a class="border-bottom text-dark" href="https://htmlcodex.com">HTML Codex</a><br><br>
-                            Distributed By <a class="border-bottom text-dark" href="https://themewagon.com" target="_blank">ThemeWagon</a>
-                        </div>
-                        <div class="col-md-6 text-center text-md-end text-dark ">
-                            <div class="footer-menu">
-                                <a href="">Home</a>
-                                <a href="">Cookies</a>
-                                <a href="">Help</a>
-                                <a href="">FQAs</a>
-                            </div>
-                        </div>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="section-title ff-secondary text-start text-dark fw-normal mb-4">Jam Operasional</h4>
+                <h5 class="text-dark fw-normal">Senin - Sabtu</h5>
+                <p>09.00 - 21.00</p>
+                <h5 class="text-dark fw-normal">Minggu</h5>
+                <p>10.00 - 20.00</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="copyright">
+            <div class="row">
+                <div class="col-md-6 text-center text-dark text-md-start mb-3 mb-md-0" id="footPage">
+                    &copy; <a class="border-bottom-dark" href="#">Nama Situs Anda</a>, Seluruh Hak Dilindungi. <br><br>
+                    Desain Oleh <a class="border-bottom text-dark" href="https://htmlcodex.com">HTML Codex</a><br><br>
+                    Didistribusikan Oleh <a class="border-bottom text-dark" href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                </div>
+                <div class="col-md-6 text-center text-md-end text-dark ">
+                    <div class="footer-menu">
+                        <a href="">Beranda</a>
+                        <a href="">Kebijakan Cookies</a>
+                        <a href="">Bantuan</a>
+                        <a href="">FAQ</a>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Footer End -->
+    </div>
+</div>
+<!-- Footer End -->
 
 
         <!-- Back to Top -->

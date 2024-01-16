@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Dokter;
 use App\Models\Pasien;
+use App\Models\Antrian;
 use App\Models\RekamMedis;
 use Illuminate\Support\Facades\Auth;
 
@@ -52,19 +53,108 @@ class DokterController extends Controller
         return view('cariPasien', ['pasien' => $pasien, 'keyword' => $keyword]);
     }
 
-    public function showRekamMedis($id)
-{
-    $pasien = Pasien::findOrFail($id);
+    public function cariRekamMedisPasien($id_pasien)
+    {
+        // Ambil data pasien berdasarkan $id_pasien
+        $pasien = Pasien::find($id_pasien);
 
+        if (!$pasien) {
+            return redirect()->route('cari.dokter')->with('error', 'Pasien tidak ditemukan');
+        }
 
-    if (!$pasien) {
-        return redirect()->route('cari.dokter')->with('error', 'Pasien tidak ditemukan.');
+        // Ambil semua rekam medis yang dimiliki pasien
+        $rekamMedis = RekamMedis::where('id_pasien', $pasien->id)->get();
+
+        return view('daftarRekamMedis', compact('pasien', 'rekamMedis'));
     }
+    
+    
+    public function tambahRekamMedisForm($id_pasien)
+    {
+        // Ambil data pasien berdasarkan $id_pasien
+        $pasien = Pasien::findOrFail($id_pasien);
+    
+        return view('tambahRekamMedis', compact('pasien'));
+    }
+    
 
-    $rekamMedis = RekamMedis::where('id_pasien', $pasien->id)->get();
+    public function storeRekamMedis(Request $request)
+    {
+        // Validasi data input
+        $request->validate([
+            'nama' => 'required',
+            'tanggal' => 'required|date',
+            'gejala' => 'required',
+            'diagnosis' => 'required',
+            'penangan' => 'required',
+            'resep_obat' => 'required',
+        ]);
+    
+        // Simpan rekam medis baru ke database
+        RekamMedis::create([
+            'id_pasien' => $request->input('id_pasien'),
+            'id_dokter' => $request->input('id_dokter'),
+            'nama' => $request->input('nama'),
+            'tanggal' => $request->input('tanggal'),
+            'gejala' => $request->input('gejala'),
+            'diagnosis' => $request->input('diagnosis'),
+            'penangan' => $request->input('penangan'),
+            'resep_obat' => $request->input('resep_obat'),
+        ]);
+    
+        // Ambil data rekam medis terbaru setelah disimpan
+        $rekamMedis = RekamMedis::latest()->first();
+    
+        return redirect()->route('cari_rekam_medis_pasien', ['id_pasien' => $request->input('id_pasien')])
+            ->with(['success' => 'Rekam Medis berhasil ditambahkan', 'rekamMedis' => $rekamMedis]);
+    }
+        
 
-    return view('daftarRekamMedis ', compact('pasien', 'rekamMedis'));
+public function detailRekamMedisForm($id)
+{
+    $rekamMedis = RekamMedis::find($id);
+
+    return view('detailRekamMedis', compact('rekamMedis'));
 }
+
+public function updateRekamMedis(Request $request)
+{
+    // Validasi data input sesuai kebutuhan
+
+    // Ambil rekam medis berdasarkan ID
+    $rekamMedis = RekamMedis::find($request->input('id'));
+    $id_pasien = $rekamMedis->id_pasien;
+
+    // Update data rekam medis
+    $rekamMedis->update([
+        'nama' => $request->input('nama'),
+        'tanggal' => $request->input('tanggal'),
+        'gejala' => $request->input('gejala'),
+        'diagnosis' => $request->input('diagnosis'),
+        'penangan' => $request->input('penangan'),
+        'resep_obat' => $request->input('resep_obat'),
+    ]);
+
+    // Redirect ke halaman pencarian rekam medis pasien
+    return redirect()->route('cari_rekam_medis_pasien', ['id_pasien' => $id_pasien])
+        ->with(['success' => 'Rekam Medis berhasil diupdate', 'rekamMedis' => $rekamMedis]);
+}
+
+public function updateStatus($id_pasien)
+{
+    // Temukan antrian yang sesuai dengan id_pasien
+    $antrian = Antrian::where('id_pasien', $id_pasien)->first();
+
+    // Perbarui status menjadi "Telah Diperiksa" atau sesuai dengan kebutuhan
+    $antrian->update(['status' => 'Telah Diperiksa']);
+
+    // Redirect ke route 'cari.dokter' atau sesuai dengan nama rute yang Anda gunakan
+    return redirect()->route('cari.dokter')->with('success', 'Status Antrian berhasil diperbarui');
+}
+
+    
+    
+    
     
     
 }

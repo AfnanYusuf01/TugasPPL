@@ -179,10 +179,10 @@ class PasienController extends Controller
         }
     }
 
-    public function cekData($id_pasien)
+    public function cekData($id)
     {
         // Ambil data Antrian berdasarkan id_pasien
-        $antrian = Antrian::where('id_pasien', $id_pasien)->first();
+        $antrian = Antrian::where('id', $id)->first();
 
         if (!$antrian) {
             // Handle jika Antrian tidak ditemukan
@@ -205,8 +205,9 @@ class PasienController extends Controller
         return redirect()->route('showDataAntrian')->with('success', 'Status berhasil diperbarui.');
     }
 
-    
-    
+    // app/Http/Controllers/DokterController.php
 
 
-}
+
+    
+    }
