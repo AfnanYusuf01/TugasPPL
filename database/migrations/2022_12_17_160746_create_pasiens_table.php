@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pasiens', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_pasien'); // Menggunakan method id() untuk membuat primary key yang bertipe big integer
             $table->string('nik');
             $table->string('nama');
             $table->string('tempat_lahir');
@@ -25,11 +25,15 @@ return new class extends Migration
             $table->string('nomor_kk');
             $table->string('agama');
             $table->string('status_kawin');
-            $table->string('file_ktp'); // asumsi Anda menyimpan path atau nama file
-            $table->string('file_kk'); // asumsi Anda menyimpan path atau nama file
-            $table->foreignId('user_id')->constrained('users');
+            $table->string('file_ktp')->nullable();
+            $table->string('file_kk')->nullable();
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+        
+            // Menggunakan foreign() untuk mendefinisikan foreign key
+            $table->foreign('user_id')->references('id_user')->on('users');
         });
+                
     }
 
     /**

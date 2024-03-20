@@ -117,8 +117,8 @@
                         <p class="mb-4"> Selain itu, kami menyediakan akses mudah ke informasi jadwal dokter, pendaftaran pasien, dan layanan darurat. Rumah Sakit IKN adalah tempat di mana perawatan berkualitas bertemu dengan perhatian yang tulus, dan kami berusaha untuk menjadikan setiap kunjungan Anda sebagai pengalaman yang nyaman dan positif.</p>
                         <div class="row g-4 mb-4">
                             <div class="col-sm-6">
-                                <div class="d-flex align-items-center border-start border-5 border-primary px-3">
-                                    <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">15</h1>
+                                <div class="d-flex align-items-center border-start border-5 border-dark px-3">
+                                    <h1 class="flex-shrink-0 display-5 text-dark mb-0" data-toggle="counter-up">3</h1>
                                     <div class="ps-4">
                                         <p class="mb-0">Years of</p>
                                         <h6 class="text-uppercase mb-0">Experience</h6>
@@ -126,11 +126,11 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="d-flex align-items-center border-start border-5 border-primary px-3">
-                                    <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">50</h1>
+                                <div class="d-flex align-items-center border-start border-5 border-dark px-3">
+                                    <h1 class="flex-shrink-0 display-5 text-dark mb-0" data-toggle="counter-up">10</h1>
                                     <div class="ps-4">
                                         <p class="mb-0">Popular</p>
-                                        <h6 class="text-uppercase mb-0">Master Chefs</h6>
+                                        <h6 class="text-uppercase mb-0">Profesinal Doktor</h6>
                                     </div>
                                 </div>
                             </div>
@@ -141,7 +141,6 @@
             </div>
         </div>
         <!-- About End -->
-
 
         <!-- Berita Starr -->
         <div class="container-xxl py-5" id="berita">
@@ -202,15 +201,38 @@
                                 <a href="#" class="btn btn-sm btn-dark">Berita Menarik</a>
                                 <h3>Judul Berita 1</h3>
                                 <p>Deskripsi singkat berita 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                <a href="#" class="read-more-link">Lihat Berita</a>
+                                <a href="#" class="read-more-link" data-target="#exampleModal">Lihat Berita</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>        
-    
         <!-- Menu End -->
+
+        <!-- Modal Start  -->
+<!-- Button trigger modal -->
+<a href="#" class="read-more-link" data-toggle="modal" data-target="#exampleModal">Lihat Berita</a>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Judul Berita</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Isi berita Anda di sini -->
+        <p>Isi berita dapat ditampilkan di sini.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+      </div>
+    </div>
+  </div>
+</div>
+        <!-- Modal End -->
 
 
         <!-- Reservation Start -->

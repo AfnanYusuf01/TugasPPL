@@ -9,22 +9,38 @@ class Dokter extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'id_dokter'; // Menggunakan 'id_dokter' sebagai primary key
+    protected $table = 'dokters';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
-        'Nama',
-        'Spesialisasi',
-        'Nomer_izin_praktik',
+        'nama',
+        'spesialisasi',
+        'image',
+        'nomer_izin_praktik',
         'email',
+        'user_id',
     ];
 
-    protected $guarded = [];
-
-    public function rekam_medis()
-{
-    return $this->hasMany(RekamMedis::class);
-}
-
+    /**
+     * Get the user that owns the dokter.
+     */
     public function user()
     {
-        return $this->belongsTo(User::class,);
+        return $this->belongsTo(User::class);
+    }
+
+    public function rekam_medis()
+    {
+        return $this->hasMany(RekamMedis::class);
+    }
+
+    public function poli()
+    {
+        return $this->hasMany(Poli::class, 'dokter_id');
     }
 }

@@ -12,18 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('rekam_medis', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_rekam_medis');
             $table->string('nama');
             $table->date('tanggal');
             $table->text('gejala');
             $table->text('diagnosis');
             $table->text('penangan');
             $table->text('resep_obat');
+            $table->unsignedBigInteger('dokter_id');
+            $table->unsignedBigInteger('pasien_id')->nullable();
             $table->timestamps();
 
             // Foreign key constraints
-            $table->foreignId('id_pasien')->constrained('pasiens');
-            $table->foreignId('id_dokter')->constrained('dokters');
+            $table->foreign('pasien_id')->references('id_pasien')->on('pasiens');            
+            $table->foreign('dokter_id')->references('id_dokter')->on('dokters');
         });
     }
 

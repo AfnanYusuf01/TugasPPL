@@ -3,8 +3,12 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\PasienController;
+use App\Http\Controllers\frontend\PoliController;
+use App\Http\Controllers\frontend\DoktersController;
+use App\Http\Controllers\frontend\AboutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DokterController;
+use App\Models\Poli;
 
 
 /*
@@ -21,18 +25,9 @@ use App\Http\Controllers\DokterController;
 Route::get('/', function () {
     return view('index');
 })->name('index');
-Route::get('/dokters', function () {
-    return view('dokters');
-})->name('dokters');
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
 Route::get('/layanan', function () {
     return view('layanan');
 })->name('layanan');
-Route::get('/schedule', function () {
-    return view('schedule');
-})->name('schedule');
 Route::get('/data-Antrian', function () {
     return view('cek_kode_referal');
 })->name('dataAntrian');
@@ -49,11 +44,10 @@ Route::post('/store', [PasienController::class, 'store_antrian'])->name('create_
 
 Route::delete('/antrian/{id}', [StaffController::class, 'delete_antrian'])->name('delete_antrian');
 
-
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+//Poli
+Route::get('/schedule',[PoliController::class, 'index'] )->name('schedule');
+Route::get('/dokters',[DoktersController::class, 'index'] )->name('dokters');
+Route::get('/about',[AboutController::class, 'index'] )->name('about');
 
 
 
