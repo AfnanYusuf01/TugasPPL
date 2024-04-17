@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
+use Termwind\Components\Dd;
 
 class RegisteredUserController extends Controller
 {
@@ -50,14 +51,26 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
     
         Auth::login($user);
-    
+        Auth::check();
+        // $role = Auth::user()->role;
+        // dd($role);
         if (Auth::check()) {
-            $isiform = $user->role === 'pasien' ? 'show.biodata' : ($user->role === 'dokter' ? 'form.dokter' : 'index');
-    
-            return redirect()->route($isiform)->with('success', 'Registrasi berhasil! Selamat datang, ' . $user->name . '!');
+            $role = Auth::user()->role;
+        
+            switch ($role) {
+                case 'Pasien':
+                    return redirect()->route('show.biodata')->with('success', 'Registrasi berhasil! Selamat datang, ' . $user->name . '!');
+                    break;
+                case 'dokter':
+                    return redirect()->route('form.dokter')->with('success', 'Registrasi berhasil! Selamat datang, ' . $user->name . '!');
+                    break;
+                default:
+                    return redirect()->route('about')->with('success', 'Registrasi berhasil! Selamat datang, ' . $user->name . '!');
+            }
         } else {
             return redirect()->route('index')->with('failed', 'Gagal untuk login ' . $user->name . '!');
         }
+        
     }
     
     public function showRegisterForm()

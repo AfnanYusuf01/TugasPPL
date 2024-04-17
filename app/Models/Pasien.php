@@ -57,4 +57,9 @@ class Pasien extends Model
     {
         return $this->hasMany(Poli::class);
     }
+
+    public function berkas()
+    {
+        return $this->hasOne(Berkas::class);
+    }
 }

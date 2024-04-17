@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,13 +18,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id_user',
         'name',
         'email',
         'password',
-        'role',
+        'role', // Hapus 'id_user' dari $fillable karena ini diatur sebagai primary key dan bukan dapat diisi massal
         'email_verified_at',
-        'rememberToken',
+        'remember_token',
     ];
 
     /**
@@ -57,6 +55,23 @@ class User extends Authenticatable
     {
         return ucfirst($value);
     }
+
+    /**
+     * Check if the user has a specific role.
+     *
+     * @param  string  $role
+     * @return bool
+     */
+    public function hasRole($role)
+    {
+        return $this->role === $role;
+    }
+
+    // Jika menggunakan tabel terpisah untuk manajemen peran, Anda perlu menyesuaikan relasinya di sini.
+    // public function roles()
+    // {
+    //     return $this->belongsToMany(Role::class);
+    // }
 
     public function pasien()
     {

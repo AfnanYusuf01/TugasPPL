@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\PasienController;
+use App\Http\Controllers\AntrianController;
 use App\Http\Controllers\frontend\PoliController;
 use App\Http\Controllers\frontend\DoktersController;
 use App\Http\Controllers\frontend\AboutController;
@@ -37,8 +38,7 @@ Route::get('/cobalihat', function () {
 
 
 
-Route::get('/addAntrian', [PasienController::class, 'create_antrian'])->name('create_antrian');
-Route::post('/store', [PasienController::class, 'store_antrian'])->name('create_antrian');
+
 
 
 
@@ -60,9 +60,10 @@ Route::middleware('auth')->group(function () {
 });
 
 // Rute untuk Pasien
-Route::middleware(['role.access:pasien'])->group(function () {
-    Route::get('/addAntrian', [PasienController::class, 'create_antrian'])->name('create_antrian');
-    Route::post('/store', [PasienController::class, 'store_antrian'])->name('store_antrian');
+Route::middleware(['role.access:Pasien'])->group(function () {
+    Route::get('/addAntrian', [AntrianController::class, 'create_antrian'])->name('create_antrian');
+    Route::post('/store-antrian', [AntrianController::class, 'store_antrian'])->name('store_antrian');
+    
     Route::get('/form-biodata', [PasienController::class, 'showForm'])->name('show.biodata');
     Route::post('/store-biodata', [PasienController::class, 'storeForm'])->name('store.biodata');
 

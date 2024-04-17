@@ -82,14 +82,14 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {{ auth()->user()->name }}
-                    <img src="storage/p.png" alt="Profile Photo" class="rounded-circle" width="30">
+                    <img src="img/dokter.jpeg" alt="Profile Photo" class="rounded-circle" width="30">
                     
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                     <li>
                         <a class="dropdown-item" href="{{ route('profile.edit') }}">
                             Profile
-                                <img src="storage/p.png" alt="Profile Photo" class="rounded-circle" width="30">
+                                <img src="img/dokter.jpeg" alt="Profile Photo" class="rounded-circle" width="30">
                         </a>
                     </li>
                     <li>

@@ -36,7 +36,7 @@ class PasienController extends Controller
 
         // Set user_id dari pengguna yang sedang login
         $user = Auth::user();
-        $validatedData['user_id'] = $user->id;
+        $validatedData['user_id'] = $user->id_user;
 
         // Upload file KTP
         $fileKtp = $request->file('file_ktp');
@@ -56,85 +56,6 @@ class PasienController extends Controller
 
         return redirect('/')->with('success', 'Biodata berhasil disimpan.');
     }
-    /**
-     * Menampilkan formulir pendaftaran antrian.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create_antrian()
-    {
-        return view('formAntrian');
-    }
-
-    /**
-     * Menyimpan data antrian ke database.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-   
-
-     public function store_antrian(Request $request)
-     {
-         // Validasi data
-         $request->validate([
-             'nama' => 'required|string',
-             'email' => 'required|email',
-             'poli' => 'required|string',
-             'penjamin' => 'required|string',
-             'bpjs' => 'nullable|file|mimes:pdf,doc,docx',
-             'surat_rujukan' => 'nullable|file|mimes:pdf,doc,docx',
-         ]);
-     
-         // Generate token
-         $token = rand(100000, 999999);
-     
-         $user = Auth::user();
-     
-         // Mengambil objek Pasien yang terkait dengan user
-         $pasien = $user->pasien;
-     
-         // Jika pengguna belum memiliki Pasien, Anda dapat menangani kasus ini sesuai kebutuhan Anda
-         if (!$pasien) {
-             return redirect()->route('formAntrian')->with('failed', 'Isi form biodata terlebih dahulu');
-         }
-     
-         // Proses file BPJS
-         $bpjsFilePath = null;
-         if ($request->hasFile('bpjs')) {
-             $bpjsFile = $request->file('bpjs');
-             $bpjsFileName = 'bpjs_' . time() . '.' . $bpjsFile->getClientOriginalExtension();
-             $bpjsFilePath = $bpjsFile->storeAs('public/bpjs_files', $bpjsFileName);
-         }
-     
-         // Proses file Surat Rujukan
-         $rujukanFilePath = null;
-         if ($request->hasFile('surat_rujukan')) {
-             $rujukanFile = $request->file('surat_rujukan');
-             $rujukanFileName = 'rujukan_' . time() . '.' . $rujukanFile->getClientOriginalExtension();
-             $rujukanFilePath = $rujukanFile->storeAs('public/rujukan_files', $rujukanFileName);
-         }
-     
-         // Set status secara default
-         $statusDefault = 'terdaftar';
-     
-         // Simpan data ke dalam database beserta token, id_pasien, dan user_id
-         $antrian = Antrian::create([
-             'token' => $token,
-             'status' => $statusDefault,
-             'id_pasien' => $pasien->id,
-             'bpjs' => $bpjsFilePath,
-             'surat_rujukan' => $rujukanFilePath,
-             'nama' => $request->input('nama'),
-             'email' => $request->input('email'),
-             'poli' => $request->input('poli'),
-             'penjamin' => $request->input('penjamin'), 
-             // Tambahkan atribut lainnya sesuai kebutuhan
-         ]);
-     
-         // Tampilkan nomor token pada halaman
-         return view('kode_referal', ['token' => $antrian->token]);
-     }
      
      
 

@@ -15,13 +15,11 @@ return new class extends Migration
             $table->id('id_antrian');
             $table->string('nama');
             $table->string('email');
-            $table->string('poli');
             $table->string('penjamin');
-            $table->string('token');
+            $table->string('dokter');
+            $table->string('token')->nullable();
             $table->string('no_urut')->nullable();
-            $table->string('status')->nullable();
-            $table->string('bpjs')->nullable();
-            $table->string('surat_rujukan')->nullable();
+            $table->string('status')->default('Terdaftar');
             $table->unsignedBigInteger('pasien_id');
             $table->unsignedBigInteger('poli_id'); // Mengubah nama kolom foreign key
             $table->timestamps();

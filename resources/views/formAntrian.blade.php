@@ -50,102 +50,73 @@
         <div class="card p-4">
             <h2 class="mb-4 text-center">Formulir Pendaftaran Antrian Rumah Sakit</h2>
 
-            <!-- Formulir Pendaftaran -->
-            <form action="{{ route('store_antrian') }}" method="post" enctype="multipart/form-data">
+            <!-- Formulir Pendaftaran start-->
+            <form action="{{ route('store_antrian') }}" method="POST">
                 @csrf
-                @method('post')
-                @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
+                <div class="form-group">
+                    <label for="nama">Nama:</label>
+                    <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukkan nama">
+                    @error('nama')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Masukkan email">
+                    @error('email')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="penjamin">Penjamin:</label>
+                    <select id="penjamin" name="penjamin" class="form-control">
+                        <option value="BPJS">BPJS</option>
+                        <option value="Jasa Raharja">Jasa Raharja</option>
+                        <option value="Umum">Umum</option>
+                    </select>
+                    @error('penjamin')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>                
+                <div class="form-group">
+                    <label for="poli">Poli:</label>
+                    <select name="poli" id="poli" class="form-control">
+                        <option value="">Pilih Poli</option>
+                        @foreach($polies as $poli)
+                            <option value="{{ $poli->id }}">{{ $poli->nama }}</option>
                         @endforeach
-                    </ul>
-                </div>
-            @endif
-            
-                <!-- Nama -->
-                <div class="mb-3">
-                    <label for="nama" class="form-label">Nama</label>
-                    <input type="text" class="form-control" id="nama" name="nama" required>
-                </div>
-
-                <!-- Email -->
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
-                </div>
-
-                <!-- Poli -->
-                <div class="mb-3">
-                    <label for="poli" class="form-label">Poli</label>
-                    <select class="form-select" id="poli" name="poli" required>
-                        <option value="" selected disabled>Pilih Poli</option>
-                        <option value="poli_umum">Poli Umum</option>
-                        <option value="poli_gigi">Poli Gigi</option>
-                        <!-- Tambahkan opsi poli lainnya sesuai kebutuhan -->
                     </select>
+                    @error('poli')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
-
-                <!-- Penjamin -->
-                <div class="mb-3">
-                    <label for="penjamin" class="form-label">Penjamin</label>
-                    <select class="form-select" id="penjamin" name="penjamin" required>
-                        <option value="" selected disabled>Pilih Penjamin</option>
-                        <option value="BPJS">BPJS Kesehatan</option>
-                        <option value="Asuransi">Asuransi Kesehatan</option>
-                        <option value="Pribadi">Pembayaran Pribadi</option>
-                        <!-- Tambahkan opsi penjamin lainnya sesuai kebutuhan -->
+                <div class="form-group">
+                    <label for="dokter">Dokter:</label>
+                    <select name="dokter" id="dokter" class="form-control">
+                        <option value="">Pilih Dokter</option>
+                        <!-- Looping poli -->
+                        @foreach($polies->chunk(3) as $key => $chunk)
+                            @foreach($chunk as $poli)
+                                <optgroup label="{{ $poli->nama }}">
+                                    <!-- Looping dokter di dalam poli -->
+                                    <option value="{{ $poli->dokter->nama }}">{{ $poli->dokter->nama }}</option>
+                                @endforeach
+                            </optgroup>
+                        @endforeach
                     </select>
-                </div>
-            
-                    <!-- Formulir BPJS -->
-                    <div id="formBPJS">
-                        <div class="mb-3">
-                            <h4>Pastikan beberapa dokumen ini lengkap</h4><br>
-                            <p>1. Kartu BPJS</p>
-                            <p>2. Surat Rujukan</p><br>
-                        </div>
-                        <div class="mb-3">
-                            <label for="file_bpjs" class="form-label">File BPJS</label>
-                            <input type="file" class="form-control-file" id="file_bpjs" name="bpjs" >
-                        </div>
-                    
-
-                        <!-- Formulir Surat Rujukan -->
-                        <div class="mb-3">
-                            <label for="file_surat_rujukan" class="form-label">File Surat Rujukan</label>
-                            <input type="file" class="form-control-file" id="file_surat_rujukan" name="surat_rujukan" >
-                        </div>
-                    </div>
-
-                <!-- Tombol Submit -->
-                <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-primary mr-2">Daftar Antrian</button>
-                    <a href="{{ route('index') }}" class="btn btn-success">Kembali</a>
-                </div>
-                
+                    @error('dokter')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>                
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+            
+            <!-- Formulir Pendaftaran end-->                        
         </div>
     </div>
 
     <!-- Bootstrap JS dan Popper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            // Sembunyikan formulir BPJS saat halaman dimuat
-            $('#formBPJS').hide();
-    
-            // Tampilkan atau sembunyikan formulir BPJS berdasarkan pilihan dropdown
-            $('#penjamin').change(function() {
-                if ($(this).val() === 'BPJS') {
-                    $('#formBPJS').show();
-                } else {
-                    $('#formBPJS').hide();
-                }
-            });
-        });
-    </script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>   
 </body>
 </html>

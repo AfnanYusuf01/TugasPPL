@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     @if (Auth::check())
-                    @if (Auth::user()->hasRole('pasien'))
+                    @if (Auth::user()->hasRole('Pasien'))
                         <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
                             <div class="service-item rounded pt-3">
                                 <div class="p-4">

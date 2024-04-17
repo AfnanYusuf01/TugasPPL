@@ -25,8 +25,8 @@ class Antrian extends Model
         'token',
         'no_urut',
         'status',
-        'bpjs',
-        'surat_rujukan',
+        'poli_id',
+        'dokter',
         'pasien_id',
     ];
 
