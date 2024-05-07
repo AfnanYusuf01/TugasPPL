@@ -23,7 +23,7 @@ class Berkas extends Model
         'surat_rujukan',
         'surat_jasaraharja',
         'surat_klaim_asuransi',
-        'id_pasien'
+        'pasien_id'
     ];
 
     public function pasien()

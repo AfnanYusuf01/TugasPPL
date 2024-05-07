@@ -75,11 +75,11 @@ class User extends Authenticatable
 
     public function pasien()
     {
-        return $this->hasOne(Pasien::class);
+        return $this->hasOne(Pasien::class, 'user_id');
     }
 
     public function dokter()
     {
-        return $this->hasOne(Dokter::class);
+        return $this->hasOne(Dokter::class, 'user_id');
     }
 }

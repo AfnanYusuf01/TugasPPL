@@ -57,16 +57,13 @@ class RegisteredUserController extends Controller
         if (Auth::check()) {
             $role = Auth::user()->role;
         
-            switch ($role) {
-                case 'Pasien':
+            if($role === 'Pasien') {
                     return redirect()->route('show.biodata')->with('success', 'Registrasi berhasil! Selamat datang, ' . $user->name . '!');
-                    break;
-                case 'dokter':
-                    return redirect()->route('form.dokter')->with('success', 'Registrasi berhasil! Selamat datang, ' . $user->name . '!');
-                    break;
-                default:
-                    return redirect()->route('about')->with('success', 'Registrasi berhasil! Selamat datang, ' . $user->name . '!');
-            }
+             }elseif ($role === 'Dokter'){
+                return redirect()->route('form.dokter')->with('success', 'Registrasi berhasil! Selamat datang, ' . $user->name . '!');
+             }else{
+                return redirect()->route('index')->with('success', 'Registrasi berhasil! Selamat datang, ' . $user->name . '!');
+             }
         } else {
             return redirect()->route('index')->with('failed', 'Gagal untuk login ' . $user->name . '!');
         }

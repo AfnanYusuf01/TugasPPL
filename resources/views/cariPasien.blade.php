@@ -11,7 +11,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <form class="d-flex justify-content-center align-items-center" action="{{route('cari_pasien')}}" method="POST">
+                    <form class="d-flex justify-content-center align-items-center" action="{{route('store.cari')}}" method="POST">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
@@ -41,7 +41,7 @@
                             <td>{{ $pasie->email }}</td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <a href="{{ route('cari_rekam_medis_pasien', ['id_pasien' => $pasie->id]) }}" class="btn btn-primary btn-sm">Cari Rekam Medis</a>
+                                    <a href="{{ route('lihat.rekamMedisPasien', ['id_pasien' => $pasie->id_pasien]) }}" class="btn btn-primary btn-sm">Input Rekam</a>
                                 </div>                                
                             </td>                            
                         </tr>

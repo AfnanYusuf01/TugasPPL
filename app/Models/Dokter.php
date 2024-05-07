@@ -22,7 +22,6 @@ class Dokter extends Model
         'spesialisasi',
         'image',
         'nomer_izin_praktik',
-        'email',
         'user_id',
     ];
 

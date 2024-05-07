@@ -12,17 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('dokters', function (Blueprint $table) {
-            $table->id('id_dokter');
+            $table->bigIncrements('id_dokter'); // Menggunakan method bigIncrements() untuk membuat primary key bertipe big integer dan increment
             $table->string('nama');
             $table->string('spesialisasi');
             $table->string('image')->nullable();
             $table->integer('nomer_izin_praktik');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
-
+        
             $table->foreign('user_id')->references('id_user')->on('users');
-
         });
+        
     }
 
     /**

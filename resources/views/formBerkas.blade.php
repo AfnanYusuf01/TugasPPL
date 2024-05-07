@@ -35,7 +35,15 @@
 <body>
     <div class="container mt-5">
         <h2 class="mb-4">Form Pengisian Berkas</h2>
-        <form action="{{ route('store_berkas') }}" method="POST" enctype="multipart/form-data">
+        @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
+        <!-- Gunakan enctype="multipart/form-data" untuk mengirim file -->
+        <form action="{{ route('storeBerkas') }}" method="POST" enctype="multipart/form-data">
+            @method('POST')
             @csrf
             <div class="form-group">
                 <label for="bpjs">Upload BPJS:</label>
@@ -53,10 +61,10 @@
                 <label for="surat_klaim_asuransi">Upload Surat Klaim Asuransi:</label>
                 <input type="file" id="surat_klaim_asuransi" name="surat_klaim_asuransi" class="form-control">
             </div>
-            <input type="hidden" name="pasien_id" value="{{ $pasien_id }}">
             <button type="submit" class="btn btn-primary btn-block">Submit</button>
         </form>
     </div>
+
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

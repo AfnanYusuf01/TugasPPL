@@ -11,17 +11,18 @@
 
 <h2 class="mb-4">Formulir Rekam Medis</h2>
 
-<form action="" method="POST">
+<form action="{{ route('tambah.rekamMedis') }}" method="POST">
     @csrf
 
     <div class="form-group">
         <label for="nama_pasien">Nama</label>
-        <input type="text" class="form-control" name="nama_pasien" required>
+        <input type="text" class="form-control" name="nama" required>
     </div>
 
     <div class="form-group">
         <label for="tanggal_pemeriksaan">Tanggal</label>
-        <input type="date" class="form-control" name="tanggal_pemeriksaan" required>
+        <input type="date" class="form-control" name="tanggal" required>
+        <input type="hidden" name="pasien_id" value="{{$id_pasien}}">
     </div>
 
     <div class="form-group">
@@ -36,7 +37,7 @@
 
     <div class="form-group">
         <label for="penanganan">Penanganan</label>
-        <textarea class="form-control" name="penanganan" rows="4" required></textarea>
+        <textarea class="form-control" name="penangan" rows="4" required></textarea>
     </div>
 
     <div class="form-group">

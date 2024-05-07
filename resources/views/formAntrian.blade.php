@@ -83,7 +83,7 @@
                     <select name="poli" id="poli" class="form-control">
                         <option value="">Pilih Poli</option>
                         @foreach($polies as $poli)
-                            <option value="{{ $poli->id }}">{{ $poli->nama }}</option>
+                            <option value="{{ $poli->id_poli }}">{{ $poli->nama }}</option>
                         @endforeach
                     </select>
                     @error('poli')

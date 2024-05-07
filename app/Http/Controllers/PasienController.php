@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Antrian;
 use App\Models\Pasien;
+use App\Models\RekamMedis;
 
 class PasienController extends Controller
 {
@@ -100,33 +101,33 @@ class PasienController extends Controller
         }
     }
 
-    public function cekData($id)
-    {
-        // Ambil data Antrian berdasarkan id_pasien
-        $antrian = Antrian::where('id', $id)->first();
 
-        if (!$antrian) {
-            // Handle jika Antrian tidak ditemukan
-            return redirect()->route('index')->with('error', 'Data Antrian tidak ditemukan.');
+    public function showRekamMedis()
+    {
+        if (Auth::check()) {
+            // Ambil data pasien terkait dari user yang sedang login
+            $pasien = Auth::user()->pasien()->first(); // Menggunakan first() karena relasi adalah one-to-one
+
+            // Pastikan data pasien tersedia
+            if ($pasien) {
+                // Ambil ID pasien dari data pasien
+                $pasien_id = $pasien->id_pasien;
+
+                // Ambil rekam medis pasien
+                $rekamMedis = RekamMedis::where('pasien_id', $pasien_id)->get();
+
+                // Kirim data pasien dan rekam medis ke halaman rekamMedisPasien.blade.php
+                return view('rekamMedisPasien', compact('pasien', 'rekamMedis'));
+            } else {
+                // Jika data pasien tidak tersedia, kembalikan dengan pesan error
+                return back()->with('error', 'Data pasien tidak ditemukan.');
+            }
+        } else {
+            // Jika pengguna tidak login atau perannya bukan 'pasien', kembalikan ke halaman login
+            return redirect()->route('login')->with('error', 'Anda belum login');
         }
-
-        // Kirim data Antrian ke halaman cek_data.blade.php
-        return view('cek_data', ['antrian' => $antrian]);
-    }
-    
-    public function updateStatus($id)
-    {
-        $antrian = Antrian::findOrFail($id);
-        
-        // Lakukan validasi atau logika lain sesuai kebutuhan
-
-        // Update status menjadi "diperiksa"
-        $antrian->update(['status' => 'diperiksa']);
-
-        return redirect()->route('showDataAntrian')->with('success', 'Status berhasil diperbarui.');
     }
 
-    // app/Http/Controllers/DokterController.php
 
 
 

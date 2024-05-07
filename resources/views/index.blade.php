@@ -50,21 +50,30 @@
                                 </div>
                             </div>
                         </div>
-                    @elseif (Auth::user()->hasRole('staff'))
+                        <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                            <div class="service-item rounded pt-3">
+                                <div class="p-4">
+                                    <a class="fa-solid fa-clipboard-list fa-5x text-dark" href="{{ route('show_rekam_medis') }}"></a>
+                                    <h5>Lihat Rekam Medis Anda</h5>
+                                    <p>"Lihat rekam medis anda disini."</p>
+                                </div>
+                            </div>
+                        </div>
+                    @elseif (Auth::user()->hasRole('Staff'))
                         <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
                             <div class="service-item rounded pt-3">
                                 <div class="p-4">
-                                    <a class="fa-solid fa-list fa-5x text-dark" href="{{route('showDataAntrian')}}" ></a>
+                                    <a class="fa-solid fa-list fa-5x text-dark" href="{{route('showSelectPoli')}}" ></a>
                                     <h5>Lihat Data Antrian</h5>
                                     <p>Layanan untuk staff rumah sakit</p>
                                 </div>
                             </div>
                         </div>
-                    @elseif (Auth::user()->hasRole('dokter'))
+                    @elseif (Auth::user()->hasRole('Dokter'))
                         <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
                             <div class="service-item rounded pt-3">
                                 <div class="p-4">
-                                    <a class="fa-regular fa-pen-to-square fa-5x text-dark" href="{{route('cari.dokter')}}" ></a>
+                                    <a class="fa-regular fa-pen-to-square fa-5x text-dark" href="{{route('cari.pasien')}}" ></a>
                                     <h5>Input Rekam Medis</h5>
                                     <p>Layanan untuk staff rumah sakit</p>
                                 </div>

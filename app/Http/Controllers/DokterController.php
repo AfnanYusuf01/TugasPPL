@@ -8,6 +8,7 @@ use App\Models\Pasien;
 use App\Models\Antrian;
 use App\Models\RekamMedis;
 use Illuminate\Support\Facades\Auth;
+use Termwind\Components\Dd;
 
 class DokterController extends Controller
 {
@@ -20,10 +21,9 @@ class DokterController extends Controller
     {
         // Validasi form
         $validatedData = $request->validate([
-            'Nama' => 'required|string|max:255',
-            'Spesialisasi' => 'required|string|max:255',
-            'Nomer_izin_praktik' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
+            'nama' => 'required|string|max:255',
+            'spesialisasi' => 'required|string|max:255',
+            'nomer_izin_praktik' => 'required|string|max:255',
         ]);
 
         // Ambil ID user yang sedang login
@@ -39,10 +39,11 @@ class DokterController extends Controller
 
     public function show_pasien()
     {
+        
         return view('cariPasien');
     }
 
-    public function cari(Request $request)
+    public function store_cari(Request $request)
     {
         $keyword = $request->input('keyword');
     
@@ -59,24 +60,21 @@ class DokterController extends Controller
         $pasien = Pasien::find($id_pasien);
 
         if (!$pasien) {
-            return redirect()->route('cari.dokter')->with('error', 'Pasien tidak ditemukan');
+            return redirect()->route('cari.pasien')->with('error', 'Pasien tidak ditemukan');
         }
 
         // Ambil semua rekam medis yang dimiliki pasien
-        $rekamMedis = RekamMedis::where('id_pasien', $pasien->id)->get();
+        $rekamMedis = RekamMedis::where('pasien_id', $pasien->id_pasien)->get();
 
-        return view('daftarRekamMedis', compact('pasien', 'rekamMedis'));
+
+        return view('rekamMedisPasien', compact('pasien', 'rekamMedis'));
     }
     
-    
-    public function tambahRekamMedisForm($id_pasien)
-    {
-        // Ambil data pasien berdasarkan $id_pasien
-        $pasien = Pasien::findOrFail($id_pasien);
-    
-        return view('tambahRekamMedis', compact('pasien'));
+    public function creatRekamMedisPasien($id)
+    {   
+        return view('formRekamMedis', ['id_pasien' => $id]);
     }
-    
+
 
     public function storeRekamMedis(Request $request)
     {
@@ -88,12 +86,23 @@ class DokterController extends Controller
             'diagnosis' => 'required',
             'penangan' => 'required',
             'resep_obat' => 'required',
+            'pasien_id' => 'required', // Validasi pasien_id
         ]);
     
+        // Ambil ID user yang sedang login
+        $user = Auth::user();
+        
+    
+        // Periksa apakah user memiliki peran dokter dan memiliki ID dokter
+        $dokter = $user->dokter; // Pastikan relasi `dokter` sudah ada di model `User`
+        if (!$dokter) {
+            return redirect()->back()->withErrors('User tidak memiliki peran dokter.');
+        }
+
         // Simpan rekam medis baru ke database
         RekamMedis::create([
-            'id_pasien' => $request->input('id_pasien'),
-            'id_dokter' => $request->input('id_dokter'),
+            'pasien_id' => $request->input('pasien_id'),
+            'dokter_id' => $dokter->id_dokter, // Mengambil `dokter_id`
             'nama' => $request->input('nama'),
             'tanggal' => $request->input('tanggal'),
             'gejala' => $request->input('gejala'),
@@ -104,11 +113,11 @@ class DokterController extends Controller
     
         // Ambil data rekam medis terbaru setelah disimpan
         $rekamMedis = RekamMedis::latest()->first();
-    
-        return redirect()->route('cari_rekam_medis_pasien', ['id_pasien' => $request->input('id_pasien')])
+        // Redirect dengan pesan sukses
+        return redirect()->route('lihat.rekamMedisPasien', ['id_pasien' => $request->input('pasien_id')])
             ->with(['success' => 'Rekam Medis berhasil ditambahkan', 'rekamMedis' => $rekamMedis]);
     }
-        
+            
 
 public function detailRekamMedisForm($id)
 {

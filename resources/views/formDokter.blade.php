@@ -20,24 +20,18 @@
 
                 <div class="form-group">
                     <label for="Nama">Nama Dokter (beserta gelar)</label>
-                    <input type="text" class="form-control" name="Nama" required>
+                    <input type="text" class="form-control" name="nama" required>
                 </div>
 
                 <div class="form-group">
                     <label for="Spesialisasi">Spesialisasi</label>
-                    <input type="text" class="form-control" name="Spesialisasi" required>
+                    <input type="text" class="form-control" name="spesialisasi" required>
                 </div>
 
                 <div class="form-group">
                     <label for="Nomer_izin_praktik">Nomor Izin Praktik</label>
-                    <input type="text" class="form-control" name="Nomer_izin_praktik" required>
+                    <input type="text" class="form-control" name="nomer_izin_praktik" required>
                 </div>
-
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" name="email" required>
-                </div>
-
                 <button type="submit" class="btn btn-primary btn-block">Daftar Dokter</button>
             </form>
         </div>

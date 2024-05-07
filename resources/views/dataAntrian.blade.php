@@ -24,7 +24,7 @@
                 <tbody>
                     <!-- Data Antrian disini -->
                     @foreach($Antrians as $antrian)
-                    <tr id="antrian_{{$antrian->id}}">
+                    <tr id="antrian_{{$antrian->id_antrian}}">
                         <td>{{$antrian->nama}}</td>
                         <td>{{$antrian->penjamin}}</td>
                         <td>{{$antrian->updated_at}}</td>
@@ -32,15 +32,15 @@
                         <td>{{$antrian->no_urut}}</td>
                         <td class="text-center">
                             <div class="btn-group" role="group">
-                                <form action="{{ route('delete_antrian', $antrian->id) }}" method="post">
+                                <form action="{{ route('delete_antrian', $antrian->id_antrian) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin ingin menghapus?')">Hapus</button>
                                 </form>
                             
-                                <a href="{{ route('cek_dataa', ['id' => $antrian->id]) }}" class="btn btn-primary btn-sm">Cek Data</a>
+                                <a href="{{ route('cek_dataa', ['id' => $antrian->id_antrian]) }}" class="btn btn-primary btn-sm">Cek Data</a>
                             
-                                <form action="{{ route('update-status', ['id' => $antrian->id]) }}" method="post">
+                                <form action="{{ route('update-status', ['id' => $antrian->id_antrian]) }}" method="post">
                                     @csrf
                                     @method('put')
                                     <button type="submit" class="btn btn-success btn-sm">Periksa</button>
