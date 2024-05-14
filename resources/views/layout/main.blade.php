@@ -38,6 +38,7 @@
 
         <!-- Bootstrap JS dan Popper.js -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        
 
 
 
@@ -46,6 +47,7 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    
 </head>
 
 <body>
@@ -149,9 +151,8 @@
         <div class="copyright">
             <div class="row">
                 <div class="col-md-6 text-center text-dark text-md-start mb-3 mb-md-0" id="footPage">
-                    &copy; <a class="border-bottom-dark" href="#">Nama Situs Anda</a>, Seluruh Hak Dilindungi. <br><br>
-                    Desain Oleh <a class="border-bottom text-dark" href="https://htmlcodex.com">HTML Codex</a><br><br>
-                    Didistribusikan Oleh <a class="border-bottom text-dark" href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                    &copy; <a class="border-bottom-dark" href="#">RS IKN </a>, Seluruh Hak Dilindungi. <br><br>
+                    Desain Oleh <a class="border-bottom text-dark" href="">@yusuf.nan</a><br>
                 </div>
                 <div class="col-md-6 text-center text-md-end text-dark ">
                     <div class="footer-menu">
